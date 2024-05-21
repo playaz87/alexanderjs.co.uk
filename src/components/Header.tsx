@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
       <Wrapper>
         <div>Alexander Sommerville</div>
         <div>React Developer</div>
-        <a href="" className={'no-print'}>See the code for this site here!</a>
+        <a href="https://github.com/playaz87/alexanderjs.co.uk" className={'no-print'}>See the code for this page here!</a>
       </Wrapper>
     </Container>
   );
