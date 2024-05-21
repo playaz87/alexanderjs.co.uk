@@ -30,24 +30,37 @@ const skills: Skill[] = [
 
 export const Skills: React.FC = () => {
   return (
-    <>
+    <Container>
       {skills.sort((s1, s2) => s2.points - s1.points).map(s =>
         <SkillItem key={s.label}>
           <div>{s.label}</div>
           <SkillPoints skill={s} />
         </SkillItem>
       )}
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+`;
+
 const SkillItem = styled.div`
+    --_dot-size: 0.8rem;
+    flex: 1 0 100%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     
     &:not(:last-of-type) {
         margin-bottom: 0.4rem;
+    }
+
+    @media screen and (max-width: 800px) {
+        max-width: 45%;
+        --_dot-size: 0.5rem;
     }
 `;
 

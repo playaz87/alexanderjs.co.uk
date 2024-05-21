@@ -42,7 +42,6 @@ const Container = styled.div`
 `;
 
 const Point = styled.div<{$type: PointTypes}>`
-    --_dot-size: 0.8rem;
     width: var(--_dot-size);
     height: var(--_dot-size);
     border-radius: 50%;
@@ -58,7 +57,7 @@ const Point = styled.div<{$type: PointTypes}>`
     
     ${({$type}) => ($type === 'empty' || $type === 'half') && css`
         &:before {
-            border: 1px solid black;
+            border: 1px solid var(--accent);
             display: block;
         }
     `}
@@ -66,7 +65,7 @@ const Point = styled.div<{$type: PointTypes}>`
     ${({$type}) => $type === 'half' && css`
         &:after {
             border-radius: 0;
-            background-color: black;
+            background-color: var(--accent);
             transform: translateX(-50%) translateY(-100%);
             display: block;
         }
@@ -74,7 +73,7 @@ const Point = styled.div<{$type: PointTypes}>`
     
     ${({$type}) => $type === 'full' && css`
         &:before {
-            background-color: black;
+            background-color: var(--accent);
             display: block;
         }
     `}
