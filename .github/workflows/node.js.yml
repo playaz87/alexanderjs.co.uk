@@ -40,6 +40,6 @@ jobs:
       - name: Deploy to Server
         run: |
           rsync -avz --delete \
-            -e "ssh -o StrictHostKeyChecking=no" -p 222 \
+            -e "ssh -o StrictHostKeyChecking=no -p 222"  \
             ./ ${{secrets.SSH_DEPLOY_PATH }}
 
