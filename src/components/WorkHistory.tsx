@@ -139,13 +139,19 @@ export const WorkHistory: React.FC = () => {
 const WorkSection = styled(Section)`
     display: grid;
     grid-template-columns: minmax(200px, 364px) minmax(630px, 1fr) 370px;
-    grid-template-areas: 'title title title' 'stack summary iframe' 'stack summary iframe';
+    grid-template-areas: 'title title title' 'stack summary phone' 'stack summary phone';
     align-items: center;
     justify-items: center;
     
+    @container content-right (width < 1295px) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: 'title phone' 'stack phone' 'summary phone';
+        grid-template-rows: 100px auto auto auto;
+    }
+    
     @container content-right (width < 900px) {
         grid-template-columns: 1fr;
-        grid-template-areas: 'title' 'stack' 'summary' 'iframe';
+        grid-template-areas: 'title' 'stack' 'summary' 'phone';
     }
 `;
 
@@ -192,6 +198,7 @@ const Phone = styled.div`
     border-bottom: 70px solid black;
     border-radius: 30px;
     position: relative;
+    grid-area: phone;
 
     &:before, &:after {
         content: '';
@@ -231,5 +238,4 @@ const IframeWrap = styled.div`
 const Iframe = styled.iframe`
     width: 100%;
     height: 100%;
-    grid-area: iframe;
 `
