@@ -1,9 +1,10 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 import {About} from "./components/About.tsx";
 import {Skills} from "./components/Skills.tsx";
 import {WorkHistory} from "./components/WorkHistory.tsx";
 import {Section} from "./components/shared.ts";
 import {Header} from "./components/Header.tsx";
+import {WorkHistoryItem} from "./components/WorkHistoryItem.tsx";
 
 function App() {
 
@@ -26,6 +27,10 @@ function App() {
           <Section>
             <h3>Work History</h3>
             <WorkHistory />
+          </Section>
+          <Section>
+            <h3>Personal Projects</h3>
+            <WorkHistoryItem id={1} title={{role: 'Developer', company: 'Tome of D2'}} date={'2018 ~ Present'} stack={[]} summary={[]} />
           </Section>
         </ContentRight>
 
