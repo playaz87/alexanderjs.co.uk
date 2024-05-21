@@ -9,7 +9,7 @@ export const About: React.FC = () => {
       <Row $icon={'mail'}>dev.ajsoftware@gmail.com</Row>
       <Row $icon={'map'}>British</Row>
       <Row $icon={'github'}>
-        <a href="http://github.com/playaz87">Github</a>
+        <a href="http://github.com/playaz87" target={'_blank'}>Github</a>
       </Row>
     </>
   );
