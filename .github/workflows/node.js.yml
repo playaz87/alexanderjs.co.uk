@@ -27,4 +27,4 @@ jobs:
         run: |
           rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=no" -p 222 \
-            ./ spooge@alexanderjs.co.uk:/path/to/your/webroot/
+            ./ spooge@alexanderjs.co.uk:/var/www/alexanderjs.co.uk/html/public_html
