@@ -40,6 +40,7 @@ const Container = styled.div<{$rows: number; $cols: number; $clicked: boolean}>`
     position: absolute;
     inset: 0;
     cursor: pointer;
+    overflow: hidden;
     
     &, > div {
         animation-fill-mode: forwards;
