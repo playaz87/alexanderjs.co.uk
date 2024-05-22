@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,10 +29,6 @@ jobs:
       - name: Build React app
         run: npm run build
 
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Deploy to Server
         uses: Pendect/action-rsyncer@v1.1.0
         env:
@@ -43,4 +39,5 @@ jobs:
           ssh_options: '-p 222'
           src: 'dist/'
           dest: ${{secrets.SSH_DEPLOY_PATH}}
+
 
