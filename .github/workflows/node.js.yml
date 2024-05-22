@@ -35,7 +35,7 @@ jobs:
           DEPLOY_KEY: ${{secrets.SSH_PRIVATE_KEY}}
         with:
           flags: '-acvz --delete-after --force'
-          options: '--chown=${{secrets.SERVER_DIR_USR_GRP}}'
+          options: '-O --chown=${{secrets.SERVER_DIR_USR_GRP}}'
           ssh_options: '-p 222'
           src: 'dist/'
           dest: ${{secrets.SSH_DEPLOY_PATH}}
