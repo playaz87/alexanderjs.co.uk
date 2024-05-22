@@ -29,6 +29,16 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Change dir
+        run: cd ./dist
+
+      - name: List files
+        run: ls
+
+      - name: Change dir
+        run: cd..
+
+
       - name: Deploy to Server
         uses: Pendect/action-rsyncer@v1.1.0
         env:
