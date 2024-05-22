@@ -9,6 +9,7 @@ export interface WorkItem {
   date: string;
   stack: string[];
   summary: string[];
+  links?: string[];
   iframeSrc?: string;
 }
 
