@@ -48,6 +48,6 @@ jobs:
           options: '--omit-dir-times --chmod=D755,F644 --chown=${{secrets.SERVER_DIR_USR_GRP}}'
           ssh_options: '-p 222'
           src: 'dist/'
-          dest: ${{secrets.SSH_DEPLOY_PATH}}
+          dest: '~/test'
 
 
