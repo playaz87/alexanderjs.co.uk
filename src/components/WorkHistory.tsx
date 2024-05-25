@@ -12,16 +12,17 @@ const history: WorkItem[] = [
       'Redux Toolkit',
       'Styled Components',
       'Axios',
-      'Socket IO'
+      'Socket IO',
+      'Vite'
     ],
     summary: [
-      'Managed team of 3 junior engineers on projects in SasS field.',
+      'Created various new projects including client-side React SPAs, server-side React SPAs, and React-based hybrid apps',
+      'Managed team of 3 junior engineers on projects in SaaS field.',
       'Efficiently managed software deployments by implementing automated processes that minimized disruption to end users while ensuring successful release launches.',
-      'Championed the adoption of modern development tools and frameworks that resulted in increased productivity across the team.',
-      'Updated old code bases to modern development standards, improving functionality.',
-      'Contributed ideas and suggestions in team meetings and delivered updates on deadlines, designs, and enhancements.',
-      'Documented technical workflows and knowledge to educate newly hired employees.',
-      'Developed browser-based software and hybrid mobile application'
+      'Vetted development tools and packages for use in customer-facing applications',
+      'Contributed ideas and suggestions in feature planning meetings and delivered updates on deadlines, designs, and enhancements.',
+      'Conferred with backend development team on server and api architecture choices',
+      'Documented technical workflows and knowledge to onboard newly hired employees.',
     ]
   },
   {
@@ -37,15 +38,15 @@ const history: WorkItem[] = [
       'Firebase Cloud Messaging'
     ],
     summary: [
-      'Managed team of 3 junior engineers on projects in SasS field.',
-      'Efficiently managed software deployments by implementing automated processes that minimized disruption to end users while ensuring successful release launches.',
+      'Created a secondhand agricultural market place hybrid mobile application',
+      'Worked alone to make a basic Figma design a reality',
       'Championed the adoption of modern development tools and frameworks that resulted in increased productivity across the team.',
       'Updated old code bases to modern development standards, improving functionality.',
       'Contributed ideas and suggestions in team meetings and delivered updates on deadlines, designs, and enhancements.',
       'Documented technical workflows and knowledge to educate newly hired employees.',
       'Developed browser-based software and hybrid mobile application'
     ],
-    iframeSrc: 'https://tomeofd2.web.app/home'
+    iframeSrc: 'https://mobile.신바람.com'
   },
   {
     id: 3,
@@ -68,7 +69,6 @@ const history: WorkItem[] = [
       'Documented technical workflows and knowledge to educate newly hired employees.',
       'Developed browser-based software and hybrid mobile application'
     ],
-    iframeSrc: 'https://mobile.신바람.com'
   },
 ]
 
