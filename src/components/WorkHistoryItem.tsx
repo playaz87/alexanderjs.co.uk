@@ -16,7 +16,7 @@ export interface WorkItem {
 export const WorkHistoryItem: React.FC<WorkItem> = (item) => {
   return (
 
-        <WorkSection >
+        <WorkSection $hasIframe={!!item.iframeSrc} >
           <Title>{item.title.role} - <em>{item.title.company}</em></Title>
 
           <Stack>
@@ -45,17 +45,17 @@ export const WorkHistoryItem: React.FC<WorkItem> = (item) => {
   );
 };
 
-const WorkSection = styled(Section)`
+const WorkSection = styled(Section)<{$hasIframe: boolean}>`
     display: grid;
-    grid-template-columns: minmax(200px, 364px) minmax(630px, 1fr) 370px;
+    grid-template-columns: minmax(200px, 364px) minmax(630px, 1fr) ${props => props.$hasIframe ? '370px' : 0};
     grid-template-areas: 'title title title' 'stack summary phone' 'stack summary phone';
     align-items: center;
     justify-items: center;
     
     @container content-right (width < 1295px) {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 2fr ${props => props.$hasIframe ? '1fr' : 0};
         grid-template-areas: 'title phone' 'stack phone' 'summary phone';
-        grid-template-rows: 100px auto auto auto;
+        grid-template-rows: 100px;
     }
     
     @container content-right (width < 900px) {
