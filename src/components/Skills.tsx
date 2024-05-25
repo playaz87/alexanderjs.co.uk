@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {SkillPoints} from "./SkillPoints.tsx";
+import { SkillIndicator } from "./SkillIndicator.tsx";
 
 export interface Skill {
   label: string;
@@ -8,22 +8,22 @@ export interface Skill {
 }
 
 const skills: Skill[] = [
-  {label: 'React', points: 5},
-  {label: 'Redux Toolkit', points: 5},
-  {label: 'CSS/SASS', points: 5},
-  {label: 'TypeScript', points: 5},
-  {label: 'Styled Components', points: 5},
-  {label: 'Capacitor JS', points: 5},
-  {label: 'Ionic', points: 5},
-  {label: 'GraphQL', points: 4},
-  {label: 'Git', points: 4},
-  {label: 'Angular', points: 3.5},
-  {label: 'MySQL / SQLite', points: 3.5},
-  {label: 'Android Native', points: 3},
-  {label: 'Unix Systems', points: 3},
-  {label: 'Java', points: 4},
-  {label: 'Socket.IO', points: 4},
-  {label: 'NextJS', points: 3.5}
+  {label: 'React', points: 100},
+  {label: 'Redux Toolkit', points: 100},
+  {label: 'CSS/SASS', points: 100},
+  {label: 'TypeScript', points: 100},
+  {label: 'Styled Components', points: 100},
+  {label: 'Capacitor JS', points: 100},
+  {label: 'Ionic', points: 100},
+  {label: 'GraphQL', points: 80},
+  {label: 'Git', points: 80},
+  {label: 'Angular', points: 65},
+  {label: 'MySQL / SQLite', points: 65},
+  {label: 'Android Native', points: 60},
+  {label: 'Unix Systems', points: 60},
+  {label: 'Java', points: 60},
+  {label: 'Socket.IO', points: 75},
+  {label: 'NextJS', points: 70}
   // {label: '', points: 4},
   // {label: '', points: 4},
 ];
@@ -34,7 +34,8 @@ export const Skills: React.FC = () => {
       {skills.sort((s1, s2) => s2.points - s1.points).map(s =>
         <SkillItem key={s.label}>
           <div>{s.label}</div>
-          <SkillPoints skill={s} />
+          <SkillIndicator skill={s} />
+          {/*<SkillPoints skill={s} />*/}
         </SkillItem>
       )}
     </Container>

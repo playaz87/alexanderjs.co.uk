@@ -5,7 +5,24 @@ import styled from "styled-components";
 export const About: React.FC = () => {
   return (
     <>
-      <Row $icon={'phone'}>+82-10-9415-2947</Row>
+      <Row $icon={'phone'}>
+          <span>+</span>
+          <span>8</span>
+          <span>2</span>
+          <span>-</span>
+          <span>1</span>
+          <span>0</span>
+          <span>-</span>
+          <span>9</span>
+          <span>4</span>
+          <span>1</span>
+          <span>5</span>
+          <span>-</span>
+          <span>2</span>
+          <span>9</span>
+          <span>4</span>
+          <span>7</span>
+      </Row>
       <Row $icon={'mail'}>dev.ajsoftware@gmail.com</Row>
       <Row $icon={'map'}>British</Row>
       <Row $icon={'github'}>
@@ -30,5 +47,9 @@ const Row = styled.div<{$icon: string}>`
     
     > a {
         text-decoration: none;
+    }
+    
+    > span:not(:first-of-type) {
+        margin-left: -1rem;
     }
 `;
