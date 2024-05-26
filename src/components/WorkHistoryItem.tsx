@@ -8,14 +8,13 @@ export interface WorkItem {
   title: {role: string; company: string};
   date: string;
   stack: string[];
-  summary: string[];
+  summary: {hero: string | React.ReactNode, detail: string | React.ReactNode}[];
   links?: string[];
   iframeSrc?: string;
 }
 
 export const WorkHistoryItem: React.FC<WorkItem> = (item) => {
   return (
-
         <WorkSection $hasIframe={!!item.iframeSrc} >
           <Title>{item.title.role} - <em>{item.title.company}</em></Title>
 
@@ -28,7 +27,7 @@ export const WorkHistoryItem: React.FC<WorkItem> = (item) => {
 
           <Summary>
             {item.summary.map(s =>
-              <li key={`summary-${item.id}-${s}`}>{s}</li>
+              <li key={`summary-${item.id}-${s.hero}`}><b>{s.hero}</b>{s.detail}</li>
             )}
           </Summary>
 
@@ -61,6 +60,10 @@ const WorkSection = styled(Section)<{$hasIframe: boolean}>`
     @container content-right (width < 900px) {
         grid-template-columns: 1fr;
         grid-template-areas: 'title' 'stack' 'summary' 'phone';
+    }
+    
+    &:nth-of-type(even) {
+        background-color: #fbfcff;
     }
 `;
 

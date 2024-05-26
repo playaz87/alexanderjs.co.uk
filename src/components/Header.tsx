@@ -19,7 +19,7 @@ const collapse = keyframes`
         font-size: 0.8rem;
     }
     to {
-        height: 80px;
+        height: 90px;
     }
 `;
 
@@ -29,7 +29,7 @@ const collapseMobile = keyframes`
         font-size: 0.8rem;
     }
     10% {
-        height: 80px;
+        height: 90px;
     }
 `;
 
@@ -71,7 +71,7 @@ const Wrapper = styled.header`
     > a {
         position: absolute;
         right: 1em;
-        bottom: 2em;
+        bottom: 1em;
         color: wheat;
         text-decoration: none;
         font-size: 1.6em;
@@ -97,7 +97,7 @@ const Wrapper = styled.header`
         > a {
             position: absolute;
             right: 1em;
-            bottom: 2em;
+            bottom: 1em;
             color: wheat;
             text-decoration: none;
             font-size: 0.8em;

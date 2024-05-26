@@ -5,7 +5,7 @@ import {WorkHistoryItem} from "./WorkHistoryItem.tsx";
 const history: WorkItem[] = [
   {
     id: 1,
-    title: {role: 'Lead Frontend Developer', company: 'Candidate Inc.'},
+    title: {role: 'Sole Frontend Developer', company: 'Candidate Inc.'},
     date: '2022.03 ~ Current',
     stack: [
       'React 18',
@@ -16,13 +16,12 @@ const history: WorkItem[] = [
       'Vite'
     ],
     summary: [
-      'Created various new projects including client-side React SPAs, server-side React SPAs, and React-based hybrid apps',
-      'Managed team of 3 junior engineers on projects in SaaS field.',
-      'Efficiently managed software deployments by implementing automated processes that minimized disruption to end users while ensuring successful release launches.',
-      'Vetted development tools and packages for use in customer-facing applications',
-      'Contributed ideas and suggestions in feature planning meetings and delivered updates on deadlines, designs, and enhancements.',
-      'Conferred with backend development team on server and api architecture choices',
-      'Documented technical workflows and knowledge to onboard newly hired employees.',
+      {hero: 'Developed and maintained innovative SaaS projects', detail: ': Created various client-side and server-side React Single Page Applications (SPAs) and React-based hybrid mobile apps, ensuring a seamless user experience across platforms.'},
+      {hero: 'Optimized deployment processes', detail: ': Implemented automated deployment strategies that ensured smooth and successful releases.'},
+      {hero: 'Evaluated and integrated development tools', detail: ': Vetted and selected development tools and packages for customer-facing applications to enhance performance and reliability.'},
+      {hero: 'Contributed to feature planning and updates', detail: ': Actively participated in feature planning meetings, offering ideas and suggestions, and regularly provided updates on project timelines, design considerations, and feature enhancements.'},
+      {hero: 'Collaborated on backend architecture', detail: ': Worked closely with the backend development team to make informed decisions regarding server and API architecture, ensuring efficient integration and performance.'},
+      {hero: 'Documented technical workflows', detail: ': Created comprehensive documentation of technical workflows and processes to facilitate the onboarding and training of new employees, ensuring smooth knowledge transfer and team integration.'},
     ]
   },
   {
@@ -38,13 +37,10 @@ const history: WorkItem[] = [
       'Firebase Cloud Messaging'
     ],
     summary: [
-      'Created a secondhand agricultural market place hybrid mobile application',
-      'Worked alone to make a basic Figma design a reality',
-      'Championed the adoption of modern development tools and frameworks that resulted in increased productivity across the team.',
-      'Updated old code bases to modern development standards, improving functionality.',
-      'Contributed ideas and suggestions in team meetings and delivered updates on deadlines, designs, and enhancements.',
-      'Documented technical workflows and knowledge to educate newly hired employees.',
-      'Developed browser-based software and hybrid mobile application'
+      {hero: 'Developed a hybrid mobile application for the agricultural market', detail: ': Created a secondhand marketplace app for agricultural products, transforming a basic Figma design into a fully functional application.'},
+      {hero: 'Developed cross-platform solutions', detail: ': Delivered browser-based software and a hybrid mobile application, ensuring a consistent and efficient user experience across devices.'},
+      {hero: 'Implemented cutting-edge development practices', detail: ': Introduced and integrated modern development tools and frameworks, significantly boosting productivity and efficiency.'},
+      {hero: 'Conducted rigorous testing and debugging', detail: ': Performed extensive testing and debugging to ensure the application was reliable, secure, and performed well under various conditions.'},
     ],
     iframeSrc: 'https://mobile.신바람.com'
   },
@@ -61,13 +57,10 @@ const history: WorkItem[] = [
       'WebRTC'
     ],
     summary: [
-      'Managed team of 3 junior engineers on projects in SasS field.',
-      'Efficiently managed software deployments by implementing automated processes that minimized disruption to end users while ensuring successful release launches.',
-      'Championed the adoption of modern development tools and frameworks that resulted in increased productivity across the team.',
-      'Updated old code bases to modern development standards, improving functionality.',
-      'Contributed ideas and suggestions in team meetings and delivered updates on deadlines, designs, and enhancements.',
-      'Documented technical workflows and knowledge to educate newly hired employees.',
-      'Developed browser-based software and hybrid mobile application'
+      {hero: 'Developed a remote consultation application for doctors', detail: ': Created a robust client application for doctors to conduct remote consultations with patients, ensuring a seamless and professional user experience.'},
+      {hero: 'Implemented video conferencing features', detail: ': Integrated WebRTC to enable high-quality, real-time video conferencing, facilitating effective remote consultations between doctors and patients.'},
+      {hero: 'Facilitated cross-functional teamwork', detail: ': Collaborated effectively with teams working on the patients\' mobile application and the backend, ensuring seamless integration and consistent functionality across all platforms.'},
+      {hero: 'Conducted user testing and gathered feedback', detail: ': Performed thorough user testing and gathered feedback from doctors to continuously improve the application\'s usability and functionality.'},
     ],
   },
 ]

@@ -4,7 +4,7 @@ import {Skills} from "./components/Skills.tsx";
 import {WorkHistory} from "./components/WorkHistory.tsx";
 import {Section} from "./components/shared.ts";
 import {Header} from "./components/Header.tsx";
-import {WorkHistoryItem} from "./components/WorkHistoryItem.tsx";
+import {TomeOfD2} from "./components/TomeOfD2.tsx";
 
 function App() {
 
@@ -45,8 +45,7 @@ function App() {
           </Section>
           <Section>
             <h3>Personal Projects</h3>
-            <WorkHistoryItem id={1} title={{role: 'Developer', company: 'Tome of D2'}} date={'2018 ~ Present'}
-                             stack={[]} summary={[]}/>
+            <TomeOfD2 />
           </Section>
         </ContentRight>
 
