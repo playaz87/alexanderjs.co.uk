@@ -15,7 +15,7 @@ const skills: Skill[] = [
   {label: 'Styled Components', points: 100},
   {label: 'Capacitor JS', points: 100},
   {label: 'Ionic', points: 100},
-  {label: 'GraphQL', points: 80},
+  {label: 'GraphQL', points: 85},
   {label: 'Git', points: 80},
   {label: 'Angular', points: 65},
   {label: 'MySQL / SQLite', points: 65},
@@ -23,7 +23,8 @@ const skills: Skill[] = [
   {label: 'Unix Systems', points: 60},
   {label: 'Java', points: 60},
   {label: 'Socket.IO', points: 75},
-  {label: 'NextJS', points: 70}
+  {label: 'NextJS', points: 70},
+  {label: 'AWS', points: 65},
   // {label: '', points: 4},
   // {label: '', points: 4},
 ];
