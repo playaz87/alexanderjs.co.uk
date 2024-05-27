@@ -54,7 +54,6 @@ const WorkSection = styled(Section)<{$hasIframe: boolean}>`
     @container content-right (width < 1295px) {
         grid-template-columns: 2fr ${props => props.$hasIframe ? '1fr' : 0};
         grid-template-areas: 'title phone' 'stack phone' 'summary phone';
-        grid-template-rows: 100px;
     }
     
     @container content-right (width < 900px) {
@@ -64,6 +63,10 @@ const WorkSection = styled(Section)<{$hasIframe: boolean}>`
     
     &:nth-of-type(even) {
         background-color: #fbfcff;
+    }
+    
+    @media print {
+        background-color: white !important;
     }
 `;
 
