@@ -29,15 +29,8 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Change dir
-        run: cd ./dist
-
-      - name: List files
-        run: ls -la
-
-      - name: Change dir
-        run: cd ..
-
+      - name: testvar
+        run: echo ${{secrets.SSH_DEPLOY_PATH}}
 
       - name: Deploy to Server
         uses: Pendect/action-rsyncer@v1.1.0
