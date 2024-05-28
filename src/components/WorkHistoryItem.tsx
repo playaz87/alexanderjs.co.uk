@@ -48,6 +48,7 @@ export const WorkHistoryItem: React.FC<WorkItem> = item => {
   );
 };
 
+//@formatter:off
 const WorkSection = styled(Section)<{ $hasIframe: boolean }>`
   display: grid;
   grid-template-columns: minmax(200px, 364px) minmax(630px, 1fr) ${props => (props.$hasIframe ? '370px' : 0)};
@@ -55,11 +56,11 @@ const WorkSection = styled(Section)<{ $hasIframe: boolean }>`
   align-items: center;
   justify-items: center;
 
-  @container content-right (width < 1295 px) {
+  @container content-right (width < 1295px) {
     grid-template-columns: 2fr ${props => (props.$hasIframe ? '1fr' : 0)};
     grid-template-areas: 'title phone' 'stack phone' 'summary phone';
   }
-  @container content-right (width < 900 px) {
+  @container content-right (width < 900px) {
     grid-template-columns: 1fr;
     grid-template-areas: 'title' 'stack' 'summary' 'phone';
   }
