@@ -29,14 +29,14 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Set env as secret
-        env:
-          MY_VAL: ${{ secrets.SSH_DEPLOY_PATH }}
-        run: |
-          import os
-          for q in (os.getenv("MY_VAL")):
-            print(q)
-        shell: python
+#      - name: Set env as secret
+#        env:
+#          MY_VAL: ${{ secrets.SSH_DEPLOY_PATH }}
+#        run: |
+#          import os
+#          for q in (os.getenv("MY_VAL")):
+#            print(q)
+#        shell: python
 
       - name: Deploy to Server
         uses: Pendect/action-rsyncer@v1.1.0
