@@ -15,6 +15,7 @@ export const TomeOfD2 = (): React.ReactNode => {
         {hero: 'Continuous Improvement', detail: ': Regularly updated the app with new functionalities, including enhancements to the user interface and performance.'},
         {hero: 'Purpose-Driven Development', detail: ': Developed the app to consolidate all Diablo II wiki data and integrate it with some of the most popular tools, providing players with a one-stop resource for all their in-game needs.'},
       ]}
+      iframeSrc={'http://td2.alexanderjs.co.uk'}
     />
   );
 };
