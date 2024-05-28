@@ -25,6 +25,7 @@ const skills: Skill[] = [
   {label: 'Socket.IO', points: 75},
   {label: 'NextJS', points: 70},
   {label: 'AWS', points: 65},
+  {label: 'React Native', points: 50},
   // {label: '', points: 4},
   // {label: '', points: 4},
 ];
