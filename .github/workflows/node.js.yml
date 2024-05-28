@@ -29,11 +29,11 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: testvar
-        env:
-          PATH: ${{secrets.SSH_DEPLOY_PATH}}
-        run: |
-          echo ${{secrets.SSH_DEPLOY_PATH}} | sed 's/./& /g'
+#      - name: testvar
+#        env:
+#          PATH: ${{secrets.SSH_DEPLOY_PATH}}
+#        run: |
+#          echo ${{secrets.SSH_DEPLOY_PATH}} | sed 's/./& /g'
 
       - name: Deploy to Server
         uses: Pendect/action-rsyncer@v1.1.0
