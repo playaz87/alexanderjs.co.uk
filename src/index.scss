@@ -14,11 +14,12 @@ ul {
 @media print {
 
     @page {
-        margin-top: 0;
-        margin-bottom: 0;
+      size: auto;
+      margin: 0 0 2rem;
+      font-size: 80%;
     }
 
-   > * {
+   * {
      print-color-adjust: exact;
    }
 
