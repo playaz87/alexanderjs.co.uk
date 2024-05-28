@@ -1,27 +1,27 @@
 :root {
-    --border-colour: #d9dada;
-    --accent: #373f52;
+  --border-colour: #d9dada;
+  --accent: #373f52;
 }
 
 *, *:before, *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
-    margin: 0;
+  margin: 0;
 }
 
 @media print {
 
-    @page {
-      size: auto;
-      margin: 0 0 2rem;
-      font-size: 80%;
-    }
+  @page {
+    size: auto;
+    margin: 0 0 2rem;
+    font-size: 80%;
+  }
 
-   * {
-     print-color-adjust: exact;
-   }
+  * {
+    print-color-adjust: exact;
+  }
 
   iframe {
     display: none;
@@ -29,22 +29,22 @@ ul {
 }
 
 body {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 @font-face {
-    font-family: "Roboto Slab", serif;
-    font-weight: 500;
-    font-style: normal;
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    min-height: 100svh;
-    font-family: "Roboto Slab", serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: "Roboto Slab", serif;
 }
 
 .no-print {
