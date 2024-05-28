@@ -5,9 +5,9 @@ import {DissolveOverlay} from "./DissolveOverlay.tsx";
 
 export interface WorkItem {
   id: number;
-  title: {role: string; company: string};
+  title: {role: string; company: string | React.ReactNode};
   date: string;
-  stack: string[];
+  stack: (string | React.ReactNode)[];
   summary: {hero: string | React.ReactNode, detail: string | React.ReactNode}[];
   links?: string[];
   iframeSrc?: string;
@@ -75,6 +75,8 @@ const Title = styled.h3`
     align-self: flex-end;
     justify-self: center;
     max-width: max-content;
+    display: flex;
+    align-items: center;
 `;
 
 const Stack = styled.div`

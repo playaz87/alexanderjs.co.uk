@@ -26,7 +26,7 @@ const history: WorkItem[] = [
   },
   {
     id: 2,
-    title: {role: 'Hybrid App Developer (React)', company: 'Shinbaram'},
+    title: {role: 'Hybrid App Developer (React)', company: <a href={'https://play.google.com/store/apps/details?id=com.uos.project_new_windy'} target={'_blank'}>Shinbaram</a>},
     date: '2021.10 ~ 2022.03',
     stack: [
       'React 18',

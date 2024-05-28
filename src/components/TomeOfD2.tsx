@@ -1,5 +1,6 @@
 import React from 'react';
 import {WorkHistoryItem} from "./WorkHistoryItem.tsx";
+import styled from "styled-components";
 
 export const TomeOfD2 = (): React.ReactNode => {
   return (
@@ -7,9 +8,13 @@ export const TomeOfD2 = (): React.ReactNode => {
       id={1}
       title={{role: 'Creator & Developer', company: 'Tome of D2 (Diablo 2 Companion App)'}}
       date={'2018 ~ Present'}
-      stack={['React', 'Ionic', 'Styled Components', 'SASS', 'Redux Toolkit', 'Axios', 'SQLite (Local database)', 'Spring Boot', 'MySQL (remote database)']}
+      stack={['React', 'Ionic', 'Styled Components', 'SASS', 'Redux Toolkit', 'Axios', 'SQLite (Local database)', 'Spring Boot', 'MySQL (remote database)',
+        <Links><a href={'https://apps.apple.com/us/app/tome-of-d2/id1446555252'} target={'_blank'}>iOS</a> <a
+          href={'https://play.google.com/store/apps/details?id=uk.co.alexanderjs.runewordhelper'} target={'_blank'}>Android</a></Links>]}
       summary={[
-        {hero: 'Conceptualized and Developed', detail: ': Created "Tome of D2," a comprehensive companion app for Diablo II players, available on both iOS and Android platforms.'},
+        {
+          hero: 'Conceptualized and Developed',
+          detail: ': Created "Tome of D2," a comprehensive companion app for Diablo II players, available on both iOS and Android platforms.'},
         {hero: 'High User Engagement', detail: ': Achieved over 50,000 active installs worldwide, becoming the highest-rated Diablo II companion app on the Google Play Store and Apple App Store.'},
         {hero: 'Cross-Platform Success', detail: ': Maintained a high rating (4.29 out of 5) based on user reviews across both platforms, reflecting strong user satisfaction.'},
         {hero: 'Continuous Improvement', detail: ': Regularly updated the app with new functionalities, including enhancements to the user interface and performance.'},
@@ -19,3 +24,10 @@ export const TomeOfD2 = (): React.ReactNode => {
     />
   );
 };
+
+const Links = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+`;
