@@ -37,6 +37,7 @@ export const PokeStats: React.FC<Props> = ({ pokemon }) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
+    perspective: 500px;
 `;
 
 const Wrapper = styled.div`
@@ -45,6 +46,12 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 1rem;
   font-size: 1.5rem;
+    transform: rotateY(-30deg);
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: rotateY(0);
+    }
 `;
 
 const Row = styled.div`
