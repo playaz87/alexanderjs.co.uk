@@ -5,7 +5,7 @@ import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
 import { selectorPokeApiResults } from '../../store/poke-api/selectors';
 import { PokemonOverview } from './components/PokemonOverview';
 
-export const PokeApiLayout = (): React.ReactElement => {
+const PokeApiLayout = (): React.ReactElement => {
   const results = useAppSelector(selectorPokeApiResults);
   const dispatch = useAppDispatch();
 
@@ -21,6 +21,8 @@ export const PokeApiLayout = (): React.ReactElement => {
     </Container>
   );
 };
+
+export default PokeApiLayout;
 
 const Container = styled.div`
   width: 100%;

@@ -7,7 +7,7 @@ import { Skills } from './components/Skills';
 import { WorkHistory } from './components/WorkHistory';
 import { TomeOfD2 } from './components/TomeOfD2';
 
-export const ResumeLayout = (): React.ReactElement => {
+const ResumeLayout = (): React.ReactElement => {
   return (
     <Container>
       <Header />
@@ -55,6 +55,8 @@ export const ResumeLayout = (): React.ReactElement => {
     </Container>
   );
 };
+
+export default ResumeLayout;
 
 const Container = styled.div`
   width: 100%;
