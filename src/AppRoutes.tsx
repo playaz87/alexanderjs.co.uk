@@ -3,8 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { PokemonDetailLayout } from './pages/pokemon-detail/PokemonDetailLayout';
 import { Spinner } from './common/components/Spinner';
 import styled from 'styled-components';
+import { HomeLayout } from './pages/home/HomeLayout';
 
 export const appRoutes = {
+  home: {
+    path: '/home',
+    nav: () => '/home',
+  },
   resume: {
     path: '/resume',
     nav: () => '/resume',
@@ -25,6 +30,7 @@ export const AppRoutes = (): React.ReactElement => {
 
   return (
     <Routes>
+      <Route path={appRoutes.home.path} element={<HomeLayout />} />
       <Route
         path={appRoutes.resume.path}
         element={
@@ -42,6 +48,7 @@ export const AppRoutes = (): React.ReactElement => {
         }
       />
       <Route path={appRoutes.pokemonDetail.path} element={<PokemonDetailLayout />} />
+      <Route path={'/'} element={<HomeLayout />} />
     </Routes>
   );
 };

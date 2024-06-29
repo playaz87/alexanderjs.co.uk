@@ -1,6 +1,6 @@
 import React from 'react';
-import type { WorkItem } from './WorkHistoryItem.tsx';
-import { WorkHistoryItem } from './WorkHistoryItem.tsx';
+import type { WorkItem } from './WorkHistoryItem';
+import { WorkHistoryItem } from './WorkHistoryItem';
 
 const history: WorkItem[] = [
   {
@@ -45,7 +45,7 @@ const history: WorkItem[] = [
     title: {
       role: 'Hybrid App Developer (React)',
       company: (
-        <a href={'https://play.google.com/store/apps/details?id=com.uos.project_new_windy'} target={'_blank'}>
+        <a href={'https://play.google.com/store/apps/details?id=com.uos.project_new_windy'} target={'_blank'} rel={'noreferrer'}>
           Shinbaram
         </a>
       ),
