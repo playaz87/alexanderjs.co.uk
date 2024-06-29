@@ -96,6 +96,10 @@ const Wrapper = styled.div`
   &:hover {
     transform: rotateY(0);
   }
+
+  @media screen and (max-width: 60rem) {
+    transform: rotateY(0);
+  }
 `;
 
 const Row = styled.div`

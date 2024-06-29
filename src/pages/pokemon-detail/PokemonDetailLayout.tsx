@@ -91,8 +91,6 @@ const Header = styled.nav<{ $color: string }>`
   }
 `;
 
-const Back = styled.div``;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -114,9 +112,20 @@ const Name = styled.div<{ $color: string }>`
 const DetailWrap = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr minmax(250px, 500px) 1fr;
+  grid-template-columns: minmax(20rem, 1fr) minmax(16rem, 32rem) minmax(20rem, 1fr);
+  align-items: center;
+
+  @media screen and (max-width: 60rem) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1rem;
+  }
 `;
 
 const Img = styled.img`
   width: 100%;
+
+  @media screen and (max-width: 60rem) {
+    max-width: 50vw;
+  }
 `;

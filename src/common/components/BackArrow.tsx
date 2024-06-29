@@ -26,13 +26,13 @@ const animate = keyframes`
 `;
 
 const Container = styled.div`
-  transform: translateX(4vw) rotate(90deg);
+  transform: translateX(3rem) rotate(90deg);
   cursor: pointer;
 
   > span {
     display: block;
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 1rem;
+    height: 1rem;
     border-bottom: 5px solid white;
     border-right: 5px solid white;
     transform: rotate(45deg);

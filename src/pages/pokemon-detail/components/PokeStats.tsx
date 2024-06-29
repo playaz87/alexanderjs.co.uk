@@ -121,6 +121,13 @@ const Wrapper = styled.div<{ $activeSection: number }>`
   &:hover {
     transform: rotateY(0);
   }
+
+  @media screen and (max-width: 60rem) {
+    transform: rotateY(0);
+    justify-content: center;
+    min-width: 280px;
+    max-width: 75vw;
+  }
 `;
 
 const Row = styled.div`
