@@ -15,7 +15,7 @@ export const PokemonOverview: React.FC<Props> = ({ resource }) => {
   return (
     <Container onClick={() => navigate(appRoutes.pokemonDetail.nav(resource.name))}>
       <Img
-        src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${leftPadId(extractPokeApiId(resource.url)!)}.png`}
+        src={`https://pokedex.hybridshivam.com/assets/thumbnails-compressed/${leftPadId(extractPokeApiId(resource.url)!)}.png`}
         alt={resource.name}
       />
       <div>{resource.name}</div>

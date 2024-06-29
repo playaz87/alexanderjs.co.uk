@@ -11,8 +11,12 @@ export const fetchNextPokemonPage = createAppAsyncThunk<Paginate>(
     if (getState().pokeSlice.paginate?.next) {
       const { data } = await axios.get(getState().pokeSlice.paginate!.next!);
       return data;
-    } else {
+    } else if (!getState().pokeSlice.paginate) {
       return client.getPokemonList();
+    } else {
+      const pokemon: string[] = [];
+      getState().pokeSlice.pokemon.forEach(p => pokemon.push(p.name));
+      console.log(pokemon);
     }
   },
   {
@@ -75,15 +79,27 @@ const pokeApiSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchNextPokemonPage.fulfilled, (state, action) => {
+        const { payload } = action;
         if (!state.paginate) {
-          state.paginate = action.payload;
-        } else {
-          const p: Paginate = {
-            ...action.payload,
-            results: [...state.paginate.results, ...action.payload.results],
-          };
-          state.paginate = p;
+          state.paginate = payload;
+          return;
         }
+
+        // Limit to first 905 pokemon as no img assets after that
+        const lastId = parseInt(extractPokeApiId(action.payload.results.at(-1)?.url)!);
+        if (lastId >= 905) {
+          const diff = lastId - 905;
+          for (let i = diff; i > 0; i--) {
+            payload.results.pop();
+          }
+          payload.next = undefined;
+        }
+
+        const p: Paginate = {
+          ...payload,
+          results: [...state.paginate.results, ...action.payload.results],
+        };
+        state.paginate = p;
       })
       .addCase(fetchPokemonByName.fulfilled, (state, action) => {
         state.pokemon.set(action.payload.name, action.payload);

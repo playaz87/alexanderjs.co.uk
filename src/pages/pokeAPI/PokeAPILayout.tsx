@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { selectorPokeApiResults } from '../../store/poke-api/selectors';
+import { selectorHasMoreResults, selectorPokeApiResults } from '../../store/poke-api/selectors';
 import { PokemonOverview } from './components/PokemonOverview';
 import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
@@ -9,6 +9,7 @@ import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
 
 const PokeApiLayout = (): React.ReactElement => {
   const results = useAppSelector(selectorPokeApiResults);
+  const hasMoreResults = useAppSelector(selectorHasMoreResults);
   const dispatch = useAppDispatch();
   const container = useRef<HTMLDivElement>(null);
   usePokeFont();
@@ -17,7 +18,7 @@ const PokeApiLayout = (): React.ReactElement => {
     dispatch(fetchNextPokemonPage());
   }, []);
 
-  const target = useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()));
+  const target = useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()), !hasMoreResults);
 
   return (
     <Container ref={container}>

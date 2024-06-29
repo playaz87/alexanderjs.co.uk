@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Spinner } from '../components/Spinner';
 import styled from 'styled-components';
 
-export const useInfiniteScroll = (scrollContainer: React.RefObject<HTMLElement>, onInfinite: () => void) => {
+export const useInfiniteScroll = (scrollContainer: React.RefObject<HTMLElement>, onInfinite: () => void, isComplete: boolean) => {
   const observer = useRef<IntersectionObserver | null>(null);
   const target = useRef<HTMLDivElement>(null);
 
@@ -29,10 +29,20 @@ export const useInfiniteScroll = (scrollContainer: React.RefObject<HTMLElement>,
     };
   }, [scrollContainer, onInfinite]);
 
+  useEffect(() => {
+    if (isComplete && observer.current) {
+      observer.current.disconnect();
+    }
+  }, [isComplete]);
+
   return (
     <Container ref={target}>
-      Loading...
-      <Spinner $size={'1rem'} />
+      {!isComplete && (
+        <>
+          Loading...
+          <Spinner $size={'5rem'} />
+        </>
+      )}
     </Container>
   );
 };
@@ -41,6 +51,7 @@ export const useInfiniteScroll = (scrollContainer: React.RefObject<HTMLElement>,
 const Container = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;

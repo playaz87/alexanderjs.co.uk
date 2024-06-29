@@ -9,6 +9,11 @@ export const selectorPokeApiResults = createSelector(
   results => results ?? (emptyArr as NonNullable<typeof results>),
 );
 
+export const selectorHasMoreResults = (state: RootState) => {
+  if (!state.pokeSlice.paginate) return true;
+  return !!state.pokeSlice.paginate.next;
+};
+
 export const selectorFindPokemon = createSelector(
   [(state: RootState) => state.pokeSlice.pokemon, (_, name?: string) => name],
   (pokemon, name) => (name ? pokemon.get(name) : undefined),
