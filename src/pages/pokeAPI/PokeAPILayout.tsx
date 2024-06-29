@@ -5,6 +5,7 @@ import { selectorPokeApiResults } from '../../store/poke-api/selectors';
 import { PokemonOverview } from './components/PokemonOverview';
 import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
+import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
 
 const PokeApiLayout = (): React.ReactElement => {
   const results = useAppSelector(selectorPokeApiResults);
@@ -16,13 +17,14 @@ const PokeApiLayout = (): React.ReactElement => {
     dispatch(fetchNextPokemonPage());
   }, []);
 
-  // useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()));
+  const target = useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()));
 
   return (
     <Container ref={container}>
       {results.map(r => (
         <PokemonOverview key={r.name} resource={r} />
       ))}
+      {target}
     </Container>
   );
 };
@@ -36,7 +38,7 @@ const Container = styled.div`
   max-height: 100vh;
   max-height: 100svh;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 20vw));
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 10vw));
   grid-auto-rows: min-content;
   justify-content: center;
   gap: 2rem;
@@ -44,4 +46,5 @@ const Container = styled.div`
   background-color: var(--bg-1);
   padding: 2rem 1rem;
   overflow: auto;
+  container-type: inline-size;
 `;
