@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { Paginate, Pokemon, PokemonEvolutionChain, PokemonSpecies } from '../../common/types/poke-api/poke-api';
 import * as client from '../../common/api/pokeAPI';
+import { getPokemonById } from '../../common/api/pokeAPI';
 import axios from 'axios';
 import { createAppAsyncThunk } from '../redux_utils';
 import { extractPokemonId } from '../../common/utils/utils';
@@ -47,7 +48,8 @@ export const fetchPokemonByUrl = createAppAsyncThunk<{ pokemon: Pokemon; id: str
 
 export const fetchPokemonById = createAppAsyncThunk<{ pokemon: Pokemon; id: string }, string>(
   'pokemon/fetchPokemonById',
-  async id => {
+  async (id, { dispatch }) => {
+    dispatch(fetchPokemonSpecies(id));
     const pokemon = await client.getPokemonById(id);
     return { pokemon, id };
   },
@@ -57,6 +59,13 @@ export const fetchPokemonById = createAppAsyncThunk<{ pokemon: Pokemon; id: stri
     },
   },
 );
+
+export const fetchPokemonByName = createAppAsyncThunk<Pokemon, string>('pokemon/fetchPokemonByName', async (name, { dispatch }) => {
+  // api accepts name or id
+  const pokemon = await getPokemonById(name);
+  dispatch(fetchPokemonSpecies(pokemon.id.toString(10)));
+  return pokemon;
+});
 
 export const fetchPokemonEvolution = createAppAsyncThunk<{ chain: PokemonEvolutionChain; id: string }, string>(
   'pokemon/fetchPokemonEvolution',
@@ -70,8 +79,9 @@ export const fetchPokemonEvolution = createAppAsyncThunk<{ chain: PokemonEvoluti
 );
 export const fetchPokemonSpecies = createAppAsyncThunk<{ species: PokemonSpecies; id: string }, string>(
   'pokemon/fetchPokemonSpecies',
-  async id => {
+  async (id, { dispatch }) => {
     const species = await client.getPokemonSpecies(id);
+    dispatch(fetchPokemonEvolution(extractPokemonId(species.evolution_chain.url)!));
     return { species, id };
   },
   {
@@ -114,6 +124,9 @@ const pokeApiSlice = createSlice({
       })
       .addCase(fetchPokemonById.fulfilled, (state, action) => {
         state.pokemon.set(action.payload.id, action.payload.pokemon);
+      })
+      .addCase(fetchPokemonByName.fulfilled, (state, action) => {
+        state.pokemon.set(action.payload.id.toString(10), action.payload);
       })
       .addCase(fetchPokemonEvolution.fulfilled, (state, action) => {
         state.evolutions.set(action.payload.id, action.payload.chain);
