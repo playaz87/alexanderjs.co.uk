@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Section } from './shared.ts';
-import { DissolveOverlay } from '../../../common/components/DissolveOverlay.tsx';
+import { Section } from './shared';
+import { PhoneFrame } from '../../../common/components/PhoneFrame';
 
 export interface WorkItem {
   id: number;
@@ -36,14 +36,7 @@ export const WorkHistoryItem: React.FC<WorkItem> = item => {
         ))}
       </Summary>
 
-      {item.iframeSrc && (
-        <Phone>
-          <IframeWrap>
-            <DissolveOverlay cols={10} rows={30} hint={'Click me'} />
-            <Iframe src={item.iframeSrc} />
-          </IframeWrap>
-        </Phone>
-      )}
+      {item.iframeSrc && <PhoneFrame src={item.iframeSrc} />}
     </WorkSection>
   );
 };
@@ -106,59 +99,4 @@ const Summary = styled.ul`
   > li {
     line-height: 175%;
   }
-`;
-
-const Phone = styled.div`
-  width: 100%;
-  max-width: 500px;
-  height: 100%;
-  min-height: 710px;
-  border-left: 12px solid black;
-  border-right: 12px solid black;
-  border-top: 40px solid black;
-  border-bottom: 70px solid black;
-  border-radius: 30px;
-  position: relative;
-  grid-area: phone;
-
-  &:before,
-  &:after {
-    content: '';
-    background-color: #9f9f9f;
-    display: block;
-    position: absolute;
-  }
-
-  &:before {
-    width: 30%;
-    height: 6px;
-    border-radius: 10000px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%) translateY(-23px);
-  }
-
-  &:after {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%) translateY(55px);
-  }
-
-  @media print {
-    display: none;
-  }
-`;
-const IframeWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
-const Iframe = styled.iframe`
-  width: 100%;
-  height: 100%;
-  border: none;
 `;

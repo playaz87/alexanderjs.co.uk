@@ -9,16 +9,30 @@ export const ResumeCard = (): React.ReactElement => {
   return (
     <HomeCard onClick={() => navigate(appRoutes.resume.nav())}>
       <Header>Resume</Header>
-      <Content>React Developer with 5 years experience</Content>
+      <Content>
+        <div>React Developer with 5 years experience</div>
+        <Img src={'/icons/resume.png'} alt='Resume' />
+      </Content>
     </HomeCard>
   );
 };
 
 const Header = styled.div`
   font-size: 2rem;
-  border-bottom: 1px solid white;
+  text-align: center;
 `;
 
 const Content = styled.div`
   padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  text-wrap: pretty;
+  font-size: 1.2rem;
+`;
+
+const Img = styled.img`
+  max-width: 45%;
+  border-radius: 4px;
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { WorkHistoryItem } from './WorkHistoryItem.tsx';
+import { WorkHistoryItem } from './WorkHistoryItem';
 import styled from 'styled-components';
 
 export const TomeOfD2 = (): React.ReactNode => {

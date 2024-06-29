@@ -5,11 +5,13 @@ import { PokeApiCard } from './components/PokeApiCard';
 import { CandidateCard } from './components/CandidateCard';
 import { Td2Card } from './components/TD2Card';
 import { ShinBaramCard } from './components/ShinBaramCard';
+import { GithubCard } from './components/GithubCard';
 
 export const HomeLayout = (): React.ReactElement => {
   return (
     <Container>
       <Grid>
+        <GithubCard />
         <ResumeCard />
         <PokeApiCard />
         <CandidateCard />
@@ -22,8 +24,8 @@ export const HomeLayout = (): React.ReactElement => {
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
 
   background-color: var(--accent);
   padding: 2rem;
@@ -31,11 +33,22 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
+  max-width: 1000px;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  margin: auto;
+
+  @media screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const HomeCard = styled.div`
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: white;
   padding: 1rem;
   border-radius: 10px;

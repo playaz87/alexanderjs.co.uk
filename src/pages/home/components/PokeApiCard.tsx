@@ -1,8 +1,8 @@
 import React from 'react';
 import { HomeCard } from '../HomeLayout';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../../AppRoutes';
+import styled from 'styled-components';
 
 export const PokeApiCard = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -13,4 +13,6 @@ export const PokeApiCard = (): React.ReactElement => {
   );
 };
 
-const Img = styled.img``;
+const Img = styled.img`
+  max-width: 100%;
+`;

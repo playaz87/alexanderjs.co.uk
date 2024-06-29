@@ -4,6 +4,9 @@ import { PokemonDetailLayout } from './pages/pokemon-detail/PokemonDetailLayout'
 import { Spinner } from './common/components/Spinner';
 import styled from 'styled-components';
 import { HomeLayout } from './pages/home/HomeLayout';
+import { CandidateLayout } from './pages/candiate/CandidateLayout';
+import { Td2Layout } from './pages/td2/Td2Layout';
+import { ShinbaramLayout } from './pages/shimbaram/ShinbaramLayout';
 
 export const appRoutes = {
   home: {
@@ -21,6 +24,18 @@ export const appRoutes = {
   pokemonDetail: {
     path: '/pokemon-detail/:name',
     nav: (name: string) => `/pokemon-detail/${name}`,
+  },
+  candidate: {
+    path: '/candidate',
+    nav: () => '/candidate',
+  },
+  td2: {
+    path: '/td2',
+    nav: () => '/td2',
+  },
+  shinbaram: {
+    path: '/shinbaram',
+    nav: () => '/shinbaram',
   },
 };
 
@@ -48,6 +63,9 @@ export const AppRoutes = (): React.ReactElement => {
         }
       />
       <Route path={appRoutes.pokemonDetail.path} element={<PokemonDetailLayout />} />
+      <Route path={appRoutes.candidate.path} element={<CandidateLayout />} />
+      <Route path={appRoutes.td2.path} element={<Td2Layout />} />
+      <Route path={appRoutes.shinbaram.path} element={<ShinbaramLayout />} />
       <Route path={'/'} element={<HomeLayout />} />
     </Routes>
   );
