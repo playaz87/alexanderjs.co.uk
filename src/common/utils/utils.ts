@@ -8,7 +8,8 @@ export const mergeArrayOfObjects = <T>(original: T[], newdata: T[], selector: ke
   return original;
 };
 
-export function extractPokemonId(url: string) {
+export function extractPokeApiId(url?: string) {
+  if (!url) return undefined;
   const regex = /\/(\d+)\/(?!.*\/\d+\/)/;
   const match = url.match(regex);
   if (match && match[1]) {
@@ -16,4 +17,9 @@ export function extractPokemonId(url: string) {
   } else {
     return undefined;
   }
+}
+
+export function leftPadId(id: string, pad: number = 3) {
+  if (id.length < pad) return leftPadId(`0${id}`);
+  return id;
 }

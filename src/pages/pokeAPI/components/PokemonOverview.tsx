@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import type { Resource } from '../../../common/types/poke-api/poke-api';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from '../../../store/store';
-import { selectorFindPokemon } from '../../../store/poke-api/selectors';
-import { extractPokemonId } from '../../../common/utils/utils';
-import { fetchPokemonByUrl } from '../../../store/poke-api/pokeApiSlice';
+import { extractPokeApiId, leftPadId } from '../../../common/utils/utils';
 import { useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../../AppRoutes';
 
@@ -13,20 +10,14 @@ interface Props {
 }
 
 export const PokemonOverview: React.FC<Props> = ({ resource }) => {
-  const id = useRef(extractPokemonId(resource.url));
-  const pokemon = useAppSelector(state => selectorFindPokemon(state, id.current));
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchPokemonByUrl(resource.url));
-  }, []);
-
-  if (!pokemon) return null;
-
   return (
-    <Container onClick={() => navigate(appRoutes.pokemonDetail.nav(id.current!))}>
-      <Img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+    <Container onClick={() => navigate(appRoutes.pokemonDetail.nav(resource.name))}>
+      <Img
+        src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${leftPadId(extractPokeApiId(resource.url)!)}.png`}
+        alt={resource.name}
+      />
       <div>{resource.name}</div>
     </Container>
   );

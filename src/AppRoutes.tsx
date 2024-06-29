@@ -1,9 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { PokeApiLayout } from './pages/pokeAPI/PokeAPILayout';
 import { PokemonDetailLayout } from './pages/pokemon-detail/PokemonDetailLayout';
-import { Spinner } from "./common/components/Spinner";
-import styled from "styled-components";
+import { Spinner } from './common/components/Spinner';
+import styled from 'styled-components';
 
 export const appRoutes = {
   resume: {
@@ -15,8 +14,8 @@ export const appRoutes = {
     nav: () => '/pokeAPI',
   },
   pokemonDetail: {
-    path: '/pokemon-detail/:id',
-    nav: (id: string) => `/pokemon-detail/${id}`,
+    path: '/pokemon-detail/:name',
+    nav: (name: string) => `/pokemon-detail/${name}`,
   },
 };
 
@@ -26,10 +25,22 @@ export const AppRoutes = (): React.ReactElement => {
 
   return (
     <Routes>
-      <Route path={appRoutes.resume.path} element={<Suspense fallback={<SuspenseFallback />}>
-        <LazyResume />
-      </Suspense>} />
-      <Route path={appRoutes.pokeAPI.path} element={<Suspense fallback={<SuspenseFallback />}><LazyPokeApi /></Suspense>} />
+      <Route
+        path={appRoutes.resume.path}
+        element={
+          <Suspense fallback={<SuspenseFallback />}>
+            <LazyResume />
+          </Suspense>
+        }
+      />
+      <Route
+        path={appRoutes.pokeAPI.path}
+        element={
+          <Suspense fallback={<SuspenseFallback />}>
+            <LazyPokeApi />
+          </Suspense>
+        }
+      />
       <Route path={appRoutes.pokemonDetail.path} element={<PokemonDetailLayout />} />
     </Routes>
   );
@@ -37,9 +48,9 @@ export const AppRoutes = (): React.ReactElement => {
 
 export const SuspenseFallback: React.FC = () => {
   return (
-      <Container>
-        <Spinner $size={'8rem'} />
-      </Container>
+    <Container>
+      <Spinner $size={'8rem'} />
+    </Container>
   );
 };
 

@@ -9,8 +9,9 @@ export const selectorPokeApiResults = createSelector(
   results => results ?? (emptyArr as NonNullable<typeof results>),
 );
 
-export const selectorFindPokemon = createSelector([(state: RootState) => state.pokeSlice.pokemon, (_, id?: string) => id], (pokemon, id) =>
-  id ? pokemon.get(id) : undefined,
+export const selectorFindPokemon = createSelector(
+  [(state: RootState) => state.pokeSlice.pokemon, (_, name?: string) => name],
+  (pokemon, name) => (name ? pokemon.get(name) : undefined),
 );
 
 export const selectorFindEvolutionChain = createSelector(

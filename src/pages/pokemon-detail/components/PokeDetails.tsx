@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import type { Pokemon, PokemonEvolution, PokeType, Resource } from '../../../common/types/poke-api/poke-api';
 import styled from 'styled-components';
-import { PokeEvolutionTag } from './PokeEvolutionTag';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { selectorFindEvolutionChain, selectorFindSpecies } from '../../../store/poke-api/selectors';
-import { extractPokemonId } from '../../../common/utils/utils';
-import { fetchPokemonByName } from '../../../store/poke-api/pokeApiSlice';
+import { extractPokeApiId } from '../../../common/utils/utils';
+import { PokeEvolutionTag } from './PokeEvolutionTag';
 
 interface Props {
   pokemon: Pokemon;
@@ -15,7 +14,7 @@ export const PokeDetails: React.FC<Props> = ({ pokemon }) => {
   const [evolutions, setEvolutions] = useState<Resource[]>([]);
   const dispatch = useAppDispatch();
   const species = useAppSelector(state => selectorFindSpecies(state, pokemon.id.toString(10)));
-  const evolution = useAppSelector(state => selectorFindEvolutionChain(state, extractPokemonId(species?.evolution_chain.url ?? '')));
+  const evolution = useAppSelector(state => selectorFindEvolutionChain(state, extractPokeApiId(species?.evolution_chain.url ?? '')));
 
   useEffect(() => {
     if (!evolution) return;
@@ -29,7 +28,7 @@ export const PokeDetails: React.FC<Props> = ({ pokemon }) => {
   };
 
   useEffect(() => {
-    evolutions.forEach(({ name }) => dispatch(fetchPokemonByName(name)));
+    // evolutions.forEach(({ name }) => dispatch(fetchPokemonByName(name)));
   }, [evolutions]);
 
   return (
@@ -70,7 +69,7 @@ export const PokeDetails: React.FC<Props> = ({ pokemon }) => {
           <Label>Evolution</Label>
           <Value>
             {evolutions.map(evol => (
-              <PokeEvolutionTag key={evol.url} pokemonId={extractPokemonId(evol.url)!} />
+              <PokeEvolutionTag key={evol.url} resource={evol} />
             ))}
           </Value>
         </Row>

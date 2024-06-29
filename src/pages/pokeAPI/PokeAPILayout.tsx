@@ -1,17 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
 import { selectorPokeApiResults } from '../../store/poke-api/selectors';
 import { PokemonOverview } from './components/PokemonOverview';
-import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
+import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
+import { usePokeFont } from '../../common/hooks/usePokeFont';
 
 const PokeApiLayout = (): React.ReactElement => {
   const results = useAppSelector(selectorPokeApiResults);
   const dispatch = useAppDispatch();
   const container = useRef<HTMLDivElement>(null);
+  usePokeFont();
 
-  useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()));
+  useEffect(() => {
+    dispatch(fetchNextPokemonPage());
+  }, []);
+
+  // useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()));
 
   return (
     <Container ref={container}>

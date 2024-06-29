@@ -3,27 +3,27 @@ import { useAppDispatch, useAppSelector } from '../../../store/store';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { selectorFindPokemon } from '../../../store/poke-api/selectors';
-import { fetchPokemonById } from '../../../store/poke-api/pokeApiSlice';
 import { appRoutes } from '../../../AppRoutes';
-import type { PokeType, TypedResource } from '../../../common/types/poke-api/poke-api';
+import type { PokeType, Resource, TypedResource } from '../../../common/types/poke-api/poke-api';
+import { fetchPokemonByName } from '../../../store/poke-api/pokeApiSlice';
 
 interface Props {
-  pokemonId: string;
+  resource: Resource;
 }
 
-export const PokeEvolutionTag: React.FC<Props> = ({ pokemonId }) => {
-  const pokemon = useAppSelector(state => selectorFindPokemon(state, pokemonId));
+export const PokeEvolutionTag: React.FC<Props> = ({ resource }) => {
+  const pokemon = useAppSelector(state => selectorFindPokemon(state, resource.name));
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchPokemonById(pokemonId));
+    dispatch(fetchPokemonByName(resource.name));
   }, []);
 
   if (!pokemon) return null;
 
   return (
-    <TypeTag $gradient={mapTypesToGradient(pokemon.types)} onClick={() => navigate(appRoutes.pokemonDetail.nav(pokemon.id.toString(10)))}>
+    <TypeTag $gradient={mapTypesToGradient(pokemon.types)} onClick={() => navigate(appRoutes.pokemonDetail.nav(pokemon.name))}>
       {pokemon.name}
       {pokemon.types.map(t => (
         <TypeIcon key={t.type.name} $type={t.type.name} />
@@ -54,6 +54,7 @@ const TypeTag = styled.button<{ $gradient: string }>`
   border: none;
   outline: none;
   background-image: ${props => props.$gradient};
+  cursor: pointer;
 `;
 
 const TypeIcon = styled.div<{ $type: PokeType }>`
