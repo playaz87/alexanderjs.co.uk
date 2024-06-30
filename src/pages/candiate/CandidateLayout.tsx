@@ -73,6 +73,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 3rem;
   background-color: var(--bg-1);
+  color: var(--accent);
 `;
 
 const Img = styled.img`

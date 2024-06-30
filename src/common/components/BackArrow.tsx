@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../AppRoutes';
+import { NavArrow } from './NavArrow';
 
 export const BackArrow = (props: React.HTMLProps<HTMLDivElement>): React.ReactElement => {
   const { pathname } = useLocation();
@@ -27,51 +27,5 @@ export const BackArrow = (props: React.HTMLProps<HTMLDivElement>): React.ReactEl
     navigate(prev ?? '/');
   };
 
-  return (
-    <Container onClick={handleBack}>
-      <span />
-      <span />
-      <span />
-    </Container>
-  );
+  return <NavArrow onClick={handleBack} direction={'backward'} />;
 };
-
-const animate = keyframes`
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-`;
-
-const Container = styled.div`
-  width: 6rem;
-  height: 3rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  > span {
-    width: 0;
-    height: 0;
-    display: block;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-
-    border-right: 10px solid white;
-    animation: ${animate} 2s linear infinite;
-  }
-
-  > span:nth-child(2) {
-    animation-delay: -0.2s;
-  }
-
-  > span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-`;

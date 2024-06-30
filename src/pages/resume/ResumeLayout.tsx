@@ -58,6 +58,7 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   background-color: white;
+  color: var(--accent);
 
   @media screen and (max-width: 800px) {
     grid-template-columns: 1fr;

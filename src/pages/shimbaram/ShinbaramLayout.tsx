@@ -44,12 +44,12 @@ const Container = styled.div`
   gap: 3rem;
   padding: 3rem;
   background-color: var(--bg-1);
+  color: var(--accent);
 `;
 
 const Header = styled.div`
   font-size: 2rem;
   font-weight: 600;
-  color: var(--accent);
 `;
 
 const Description = styled.div`
