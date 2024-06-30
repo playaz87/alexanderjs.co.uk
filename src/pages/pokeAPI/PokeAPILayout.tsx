@@ -1,31 +1,33 @@
-import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { selectorHasMoreResults, selectorPokeApiResults } from '../../store/poke-api/selectors';
-import { PokemonOverview } from './components/PokemonOverview';
 import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
-import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { BackArrow } from '../../common/components/BackArrow';
+import styled from 'styled-components';
+import { selectorFindPokemon, selectorFindSpecies } from '../../store/poke-api/selectors';
+import { extractPokeApiId } from '../../common/utils/utils';
 
 const PokeApiLayout = (): React.ReactElement => {
-  const results = useAppSelector(selectorPokeApiResults);
-  const hasMoreResults = useAppSelector(selectorHasMoreResults);
+  const { name } = useParams();
+  const pokemon = useAppSelector(state => selectorFindPokemon(state, name));
+  const species = useAppSelector(state => selectorFindSpecies(state, extractPokeApiId(pokemon?.species.url)));
   const dispatch = useAppDispatch();
-  const container = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
   usePokeFont();
 
   useEffect(() => {
     dispatch(fetchNextPokemonPage());
   }, []);
 
-  const target = useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()), !hasMoreResults);
-
   return (
-    <Container ref={container}>
-      {results.map(r => (
-        <PokemonOverview key={r.name} resource={r} />
-      ))}
-      {target}
+    <Container>
+      <Header $color={species?.color.name}>
+        <BackArrow />
+        <div>PokeAPI</div>
+      </Header>
+      <Outlet />
     </Container>
   );
 };
@@ -33,19 +35,27 @@ const PokeApiLayout = (): React.ReactElement => {
 export default PokeApiLayout;
 
 const Container = styled.div`
-  width: 100%;
   min-height: 100vh;
   min-height: 100svh;
   max-height: 100vh;
   max-height: 100svh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 10vw));
-  grid-auto-rows: min-content;
-  justify-content: center;
-  gap: 2rem;
-  column-gap: 3%;
   background-color: var(--bg-1);
-  padding: 2rem 1rem;
-  overflow: auto;
-  container-type: inline-size;
+  overflow: hidden;
+`;
+
+const Header = styled.nav<{ $color?: string }>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--color-${props => props.$color}, var(--color-red));
+  font-family: 'Pokemon Hollow', sans-serif;
+
+  > div:last-of-type {
+    background-color: yellow;
+    background-clip: text;
+    -webkit-text-fill-color: yellow;
+    font-size: 2.6rem;
+  }
 `;

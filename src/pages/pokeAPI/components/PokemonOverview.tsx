@@ -3,7 +3,6 @@ import type { Resource } from '../../../common/types/poke-api/poke-api';
 import styled from 'styled-components';
 import { extractPokeApiId, leftPadId } from '../../../common/utils/utils';
 import { useNavigate } from 'react-router-dom';
-import { appRoutes } from '../../../AppRoutes';
 
 interface Props {
   resource: Resource;
@@ -13,7 +12,7 @@ export const PokemonOverview: React.FC<Props> = ({ resource }) => {
   const navigate = useNavigate();
 
   return (
-    <Container onClick={() => navigate(appRoutes.pokemonDetail.nav(resource.name))}>
+    <Container onClick={() => navigate(resource.name)}>
       <Img
         src={`https://pokedex.hybridshivam.com/assets/thumbnails-compressed/${leftPadId(extractPokeApiId(resource.url)!)}.png`}
         alt={resource.name}

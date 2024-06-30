@@ -22,6 +22,8 @@ const Phone = styled.div`
   max-width: 500px;
   height: 100%;
   min-height: 710px;
+  display: flex;
+  flex-direction: column;
   border-left: 12px solid black;
   border-right: 12px solid black;
   border-top: 40px solid black;
@@ -64,11 +66,15 @@ const Phone = styled.div`
 const IframeWrap = styled.div`
   width: 100%;
   height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   position: relative;
 `;
 
 const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
+  flex-grow: 1;
   border: none;
 `;

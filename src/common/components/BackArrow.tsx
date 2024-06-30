@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { appRoutes } from '../../AppRoutes';
 
 export const BackArrow = (props: React.HTMLProps<HTMLDivElement>): React.ReactElement => {
+  const { pathname } = useLocation();
+  const stack = useRef<string[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    stack.current.push(pathname);
+  }, [pathname]);
+
+  const handleBack = () => {
+    stack.current.pop();
+    let prev = stack.current.pop();
+    if (!prev) {
+      return navigate('/');
+    }
+
+    const pokeApiIdx = prev.indexOf(appRoutes.pokeAPI.path);
+    while (prev && pokeApiIdx > -1 && prev.length > appRoutes.pokeAPI.path.length) {
+      prev = stack.current.pop();
+    }
+
+    navigate(prev ?? '/');
+  };
+
   return (
-    <Container {...props}>
+    <Container onClick={handleBack}>
       <span />
       <span />
       <span />
@@ -14,30 +39,32 @@ export const BackArrow = (props: React.HTMLProps<HTMLDivElement>): React.ReactEl
 const animate = keyframes`
     0% {
         opacity: 0;
-        transform: rotate(45deg) translate(-20px, -20px);
     }
     50% {
         opacity: 1;
     }
     100% {
         opacity: 0;
-        transform: rotate(45deg) translate(20px, 20px);
     }
 `;
 
 const Container = styled.div`
-  transform: translateX(3rem) rotate(90deg);
+  width: 6rem;
+  height: 3rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
   > span {
+    width: 0;
+    height: 0;
     display: block;
-    width: 1rem;
-    height: 1rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(45deg);
-    margin: -10px;
-    animation: ${animate} 2s infinite;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right: 10px solid white;
+    animation: ${animate} 2s linear infinite;
   }
 
   > span:nth-child(2) {

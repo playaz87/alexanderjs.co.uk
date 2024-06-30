@@ -20,9 +20,11 @@ const Img = styled.div`
   height: 100%;
   width: 100%;
   max-width: 100%;
+  max-height: 220px;
   mask: url('/icons/github.svg');
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: white;
+  aspect-ratio: 1 / 1;
 `;

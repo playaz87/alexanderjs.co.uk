@@ -17,7 +17,7 @@ export const CandidateCard = (): React.ReactElement => {
           Built using React, Redux and Styled Components.
           <br />
           <br />
-          Data is automatically synced via websockets. A global auth portal the various services.
+          Data is automatically synced via websockets. A global auth portal for the various services.
         </div>
         <Preview src={'/icons/candidate_preview.png'} alt={'candidate preview'} />
       </Content>

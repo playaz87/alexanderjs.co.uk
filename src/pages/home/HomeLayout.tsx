@@ -1,23 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ResumeCard } from './components/ResumeCard';
-import { PokeApiCard } from './components/PokeApiCard';
-import { CandidateCard } from './components/CandidateCard';
-import { Td2Card } from './components/TD2Card';
-import { ShinBaramCard } from './components/ShinBaramCard';
-import { GithubCard } from './components/GithubCard';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Header } from './components/Header';
+import { appRoutes } from '../../AppRoutes';
 
 export const HomeLayout = (): React.ReactElement => {
+  const { pathname } = useLocation();
   return (
     <Container>
-      <Grid>
-        <GithubCard />
-        <ResumeCard />
-        <PokeApiCard />
-        <CandidateCard />
-        <Td2Card />
-        <ShinBaramCard />
-      </Grid>
+      {!pathname.includes(appRoutes.pokeAPI.path) && <Header />}
+      <Outlet />
     </Container>
   );
 };
@@ -26,21 +18,7 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-
   background-color: var(--accent);
-  padding: 2rem;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  max-width: 1000px;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: auto;
-
-  @media screen and (max-width: 750px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 export const HomeCard = styled.div`
@@ -52,6 +30,7 @@ export const HomeCard = styled.div`
   color: white;
   padding: 1rem;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(40 169 199 / 8%);
   cursor: pointer;
+  box-shadow: 4px 6px 5px 1px #b1aeae8a;
 `;

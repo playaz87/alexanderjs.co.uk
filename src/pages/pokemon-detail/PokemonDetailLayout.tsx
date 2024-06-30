@@ -8,8 +8,6 @@ import { PokeStats } from './components/PokeStats';
 import { extractPokeApiId, leftPadId } from '../../common/utils/utils';
 import { fetchPokemonByName } from '../../store/poke-api/pokeApiSlice';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
-import { BackArrow } from '../../common/components/BackArrow';
-import { appRoutes } from '../../AppRoutes';
 import { Spinner } from '../../common/components/Spinner';
 
 export const PokemonDetailLayout = (): React.ReactElement => {
@@ -37,10 +35,6 @@ export const PokemonDetailLayout = (): React.ReactElement => {
 
   return (
     <Container>
-      <Header $color={species?.color.name}>
-        <BackArrow onClick={() => navigate(appRoutes.pokeAPI.nav())} />
-        <div>PokeAPI</div>
-      </Header>
       <Wrapper>
         <Name $color={species?.color.name}>{pokemon.name.toUpperCase()}</Name>
         <DetailWrap>
@@ -59,8 +53,7 @@ export const PokemonDetailLayout = (): React.ReactElement => {
 
 const SpinnerContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,27 +61,10 @@ const SpinnerContainer = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
   font-family: 'Pokemon Hollow', sans-serif;
-`;
-
-const Header = styled.nav<{ $color: string }>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: var(--color-${props => props.$color});
-
-  > div:last-of-type {
-    background-color: yellow;
-    background-clip: text;
-    -webkit-text-fill-color: yellow;
-    font-size: 2.6rem;
-  }
 `;
 
 const Wrapper = styled.div`

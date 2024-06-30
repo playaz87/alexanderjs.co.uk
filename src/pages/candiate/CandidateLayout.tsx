@@ -9,7 +9,7 @@ export const CandidateLayout = (): React.ReactElement => {
       <Description>
         <div>
           An innovate Applicant Tracking System that uses Kakao Talk to schedule interviews with applicants. Built using React, Redux and
-          Styled Components. Data is automatically synced via websockets. A global auth portal the various services.
+          Styled Components. Data is automatically synced via websockets. A global auth portal for the various services.
         </div>
         <Features>
           <ul>

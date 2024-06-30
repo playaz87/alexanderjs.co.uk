@@ -64,6 +64,7 @@ export const PokeStats: React.FC<Props> = ({ pokemon }) => {
 };
 
 const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
