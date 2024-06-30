@@ -56,7 +56,7 @@ export const HomeCard = styled.div`
 
   > img {
     padding: 0.5rem;
-    border-radius: 10px;
+    border-radius: 30px;
     max-width: 100%;
     max-height: 400px;
   }
