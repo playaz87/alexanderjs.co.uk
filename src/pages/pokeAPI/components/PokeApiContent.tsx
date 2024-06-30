@@ -29,7 +29,7 @@ const Container = styled.div`
   max-height: 100vh;
   max-height: 100svh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 10vw));
+  grid-template-columns: repeat(auto-fit, 10rem);
   grid-auto-rows: min-content;
   justify-content: center;
   gap: 2rem;

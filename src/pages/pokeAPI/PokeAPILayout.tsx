@@ -40,7 +40,7 @@ const Container = styled.div`
   max-height: 100vh;
   max-height: 100svh;
   background-color: var(--bg-1);
-  overflow: hidden;
+  overflow: auto;
 `;
 
 const Header = styled.nav<{ $color?: string }>`
