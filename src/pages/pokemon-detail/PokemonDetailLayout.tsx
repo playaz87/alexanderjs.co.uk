@@ -75,6 +75,7 @@ const Wrapper = styled.div`
   padding: 3rem;
   background-color: var(--bg-1);
   font-family: Roboto Slab;
+  color: var(--accent);
 `;
 
 const Name = styled.div<{ $color: string }>`
@@ -87,9 +88,11 @@ const Name = styled.div<{ $color: string }>`
 
 const DetailWrap = styled.div`
   width: 100%;
+  max-height: 100%;
   display: grid;
   grid-template-columns: minmax(20rem, 1fr) minmax(16rem, 32rem) minmax(20rem, 1fr);
   align-items: center;
+  overflow: auto;
 
   @media screen and (max-width: 60rem) {
     grid-template-columns: 1fr;
