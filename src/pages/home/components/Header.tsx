@@ -1,16 +1,17 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { BackArrow } from '../../../common/components/BackArrow';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <Container>
       <InnerContainer>
         {pathname !== '/' && <BackArrow />}
-        <Logo />
+        <Logo onClick={() => navigate('/')} />
       </InnerContainer>
     </Container>
   );
@@ -50,12 +51,12 @@ const Logo = styled.div`
   width: 6rem;
   height: 3rem;
   mask: url('/icons/ajs.svg');
-
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: var(--text-accent);
   margin-left: auto;
+  cursor: pointer;
 `;
 
 const InnerContainer = styled.header`
