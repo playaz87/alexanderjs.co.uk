@@ -92,7 +92,7 @@ const DetailWrap = styled.div`
   display: grid;
   grid-template-columns: minmax(20rem, 1fr) minmax(16rem, 32rem) minmax(20rem, 1fr);
   align-items: center;
-  overflow: auto;
+  overflow: visible;
 
   @media screen and (max-width: 60rem) {
     grid-template-columns: 1fr;
