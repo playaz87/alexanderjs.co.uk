@@ -12,11 +12,14 @@ const PokeApiLayout = (): React.ReactElement => {
   const hasMoreResults = useAppSelector(selectorHasMoreResults);
   const dispatch = useAppDispatch();
   const container = useRef<HTMLDivElement>(null);
+  const p = useAppSelector(state => state.pokeSlice.paginate);
   usePokeFont();
 
   useEffect(() => {
-    dispatch(fetchNextPokemonPage());
-  }, []);
+    if (p && !p.next) {
+      console.log(p.results.map(x => x.name));
+    }
+  }, [p]);
 
   const target = useInfiniteScroll(container, () => dispatch(fetchNextPokemonPage()), !hasMoreResults);
 
