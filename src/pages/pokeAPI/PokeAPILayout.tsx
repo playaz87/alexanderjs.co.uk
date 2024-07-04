@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/store';
-import { fetchNextPokemonPage } from '../../store/poke-api/pokeApiSlice';
+import React from 'react';
+import { useAppSelector } from '../../store/store';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { BackArrow } from '../../common/components/BackArrow';
 import styled from 'styled-components';
 import { selectorFindPokemon, selectorFindSpecies } from '../../store/poke-api/selectors';
@@ -12,14 +11,8 @@ const PokeApiLayout = (): React.ReactElement => {
   const { name } = useParams();
   const pokemon = useAppSelector(state => selectorFindPokemon(state, name));
   const species = useAppSelector(state => selectorFindSpecies(state, extractPokeApiId(pokemon?.species.url)));
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   usePokeFont();
-
-  useEffect(() => {
-    dispatch(fetchNextPokemonPage());
-  }, []);
 
   return (
     <Container>
