@@ -1,15 +1,24 @@
 import React from 'react';
 import type { Skill } from './Skills.tsx';
 import styled from 'styled-components';
+import { animated, useSpring } from '@react-spring/web';
 
 interface Props {
   skill: Skill;
 }
 
 export const SkillIndicator: React.FC<Props> = ({ skill }) => {
+  const springProps = useSpring({
+    from: { width: 0 },
+    to: { width: skill.points },
+    config: { tension: 170, friction: 26 },
+  });
+
   return (
     <Container>
-      <Bar $percent={skill.points}></Bar>
+      <BarWrapper>
+        <Bar $percent={skill.points} style={springProps} />
+      </BarWrapper>
     </Container>
   );
 };
@@ -22,7 +31,7 @@ const Container = styled.div`
   margin-left: auto;
 `;
 
-const Bar = styled.div<{ $percent: number }>`
+const BarWrapper = styled.div`
   width: 100%;
   height: 0.8rem;
   border-radius: 10000px;
@@ -31,12 +40,13 @@ const Bar = styled.div<{ $percent: number }>`
   overflow: hidden;
   background-clip: content-box;
   position: relative;
+`;
 
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
-    border-image: fill 1 linear-gradient(to right, var(--accent), ${props => props.$percent}%, white, ${props => props.$percent}%, white);
-  }
+const Bar = styled(animated.div)<{ $percent: number }>`
+  width: ${props => props.$percent}px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--accent);
 `;

@@ -7,23 +7,13 @@ import { HomeLayout } from './pages/home/HomeLayout';
 import { CandidateLayout } from './pages/candiate/CandidateLayout';
 import { Td2Layout } from './pages/td2/Td2Layout';
 import { ShinbaramLayout } from './pages/shimbaram/ShinbaramLayout';
+import { HomeContent } from './pages/home/components/HomeContent';
+import { PokeApiContent } from './pages/pokeAPI/components/PokeApiContent';
 
 export const appRoutes = {
-  home: {
-    path: '/home',
-    nav: () => '/home',
-  },
   resume: {
     path: '/resume',
     nav: () => '/resume',
-  },
-  pokeAPI: {
-    path: '/pokeAPI',
-    nav: () => '/pokeAPI',
-  },
-  pokemonDetail: {
-    path: '/pokemon-detail/:name',
-    nav: (name: string) => `/pokemon-detail/${name}`,
   },
   candidate: {
     path: '/candidate',
@@ -37,6 +27,16 @@ export const appRoutes = {
     path: '/shinbaram',
     nav: () => '/shinbaram',
   },
+  pokeAPI: {
+    path: '/pokeAPI',
+    nav: () => '/pokeAPI',
+    children: {
+      detail: {
+        path: ':name',
+        nav: (name: string) => `/pokeAPI/${name}`,
+      },
+    },
+  },
 };
 
 export const AppRoutes = (): React.ReactElement => {
@@ -45,28 +45,32 @@ export const AppRoutes = (): React.ReactElement => {
 
   return (
     <Routes>
-      <Route path={appRoutes.home.path} element={<HomeLayout />} />
-      <Route
-        path={appRoutes.resume.path}
-        element={
-          <Suspense fallback={<SuspenseFallback />}>
-            <LazyResume />
-          </Suspense>
-        }
-      />
-      <Route
-        path={appRoutes.pokeAPI.path}
-        element={
-          <Suspense fallback={<SuspenseFallback />}>
-            <LazyPokeApi />
-          </Suspense>
-        }
-      />
-      <Route path={appRoutes.pokemonDetail.path} element={<PokemonDetailLayout />} />
-      <Route path={appRoutes.candidate.path} element={<CandidateLayout />} />
-      <Route path={appRoutes.td2.path} element={<Td2Layout />} />
-      <Route path={appRoutes.shinbaram.path} element={<ShinbaramLayout />} />
-      <Route path={'/'} element={<HomeLayout />} />
+      <Route path={'/'} element={<HomeLayout />}>
+        <Route element={<HomeContent />} index />
+        <Route
+          path={appRoutes.resume.path}
+          element={
+            <Suspense fallback={<SuspenseFallback />}>
+              <LazyResume />
+            </Suspense>
+          }
+        />
+        <Route
+          path={appRoutes.pokeAPI.path}
+          element={
+            <Suspense fallback={<SuspenseFallback />}>
+              <LazyPokeApi />
+            </Suspense>
+          }
+        >
+          <Route path={appRoutes.pokeAPI.path} element={<PokeApiContent />} index />
+          <Route path={appRoutes.pokeAPI.children.detail.path} element={<PokemonDetailLayout />} />
+        </Route>
+
+        <Route path={appRoutes.candidate.path} element={<CandidateLayout />} />
+        <Route path={appRoutes.td2.path} element={<Td2Layout />} />
+        <Route path={appRoutes.shinbaram.path} element={<ShinbaramLayout />} />
+      </Route>
     </Routes>
   );
 };

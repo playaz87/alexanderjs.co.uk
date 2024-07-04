@@ -39,8 +39,7 @@ export const Td2Layout = (): React.ReactElement => {
 };
 
 const Container = styled.div`
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,6 +47,8 @@ const Container = styled.div`
   justify-content: center;
   gap: 3rem;
   padding: 3rem;
+  background-color: var(--bg-1);
+  color: var(--accent);
 `;
 
 const Header = styled.div`

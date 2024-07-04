@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from './components/Header';
 import { Section } from './components/shared';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
@@ -9,66 +8,57 @@ import { TomeOfD2 } from './components/TomeOfD2';
 
 const ResumeLayout = (): React.ReactElement => {
   return (
-    <Container>
-      <Header />
-      <Content>
-        <ContentLeft>
-          <Section>
-            <h3>About</h3>
-            <About />
-          </Section>
-          <Section>
-            <h3>Skills</h3>
-            <Skills />
-          </Section>
-        </ContentLeft>
+    <Content>
+      <ContentLeft>
+        <Section>
+          <h3>About</h3>
+          <About />
+        </Section>
+        <Section>
+          <h3>Skills</h3>
+          <Skills />
+        </Section>
+      </ContentLeft>
 
-        <ContentRight>
-          <Section>
-            <h3>Introduction</h3>
-            <IntroUL>
-              <li>
-                Experienced Frontend React Developer with 5 years of expertise in creating, maintaining, and deploying high-quality React
-                applications
-              </li>
-              <li>Proficient in developing hybrid mobile apps using React and CapacitorJS</li>
-              <li>
-                Successfully delivered several projects from conception to deployment, ensuring robust performance and user-friendly
-                interfaces.
-              </li>
-              <li>
-                I&apos;m Passionate about frontend development, I dedicate my free time to learning and experimenting with new technologies
-                and features, constantly striving to enhance my skills and stay current with industry trends.
-              </li>
-            </IntroUL>
-          </Section>
-          <Section>
-            <h3>Work History</h3>
-            <WorkHistory />
-          </Section>
-          <Section>
-            <h3>Personal Projects</h3>
-            <TomeOfD2 />
-          </Section>
-        </ContentRight>
-      </Content>
-    </Container>
+      <ContentRight>
+        <Section>
+          <h3>Introduction</h3>
+          <IntroUL>
+            <li>
+              Experienced Frontend React Developer with 5 years of expertise in creating, maintaining, and deploying high-quality React
+              applications
+            </li>
+            <li>Proficient in developing hybrid mobile apps using React and CapacitorJS</li>
+            <li>
+              Successfully delivered several projects from conception to deployment, ensuring robust performance and user-friendly
+              interfaces.
+            </li>
+            <li>
+              I&apos;m Passionate about frontend development, I dedicate my free time to learning and experimenting with new technologies
+              and features, constantly striving to enhance my skills and stay current with industry trends.
+            </li>
+          </IntroUL>
+        </Section>
+        <Section>
+          <h3>Work History</h3>
+          <WorkHistory />
+        </Section>
+        <Section>
+          <h3>Personal Projects</h3>
+          <TomeOfD2 />
+        </Section>
+      </ContentRight>
+    </Content>
   );
 };
 
 export default ResumeLayout;
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-`;
-
 const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
+  background-color: white;
+  color: var(--accent);
 
   @media screen and (max-width: 800px) {
     grid-template-columns: 1fr;

@@ -1,50 +1,31 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { appRoutes } from '../../AppRoutes';
+import { NavArrow } from './NavArrow';
 
 export const BackArrow = (props: React.HTMLProps<HTMLDivElement>): React.ReactElement => {
-  return (
-    <Container {...props}>
-      <span />
-      <span />
-      <span />
-    </Container>
-  );
+  const { pathname } = useLocation();
+  const stack = useRef<string[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    stack.current.push(pathname);
+  }, [pathname]);
+
+  const handleBack = () => {
+    stack.current.pop();
+    let prev = stack.current.pop();
+    if (!prev) {
+      return navigate('/');
+    }
+
+    const pokeApiIdx = prev.indexOf(appRoutes.pokeAPI.path);
+    while (prev && pokeApiIdx > -1 && prev.length > appRoutes.pokeAPI.path.length) {
+      prev = stack.current.pop();
+    }
+
+    navigate(prev ?? '/');
+  };
+
+  return <NavArrow onClick={handleBack} direction={'backward'} />;
 };
-
-const animate = keyframes`
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-20px, -20px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translate(20px, 20px);
-    }
-`;
-
-const Container = styled.div`
-  transform: translateX(3rem) rotate(90deg);
-  cursor: pointer;
-
-  > span {
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(45deg);
-    margin: -10px;
-    animation: ${animate} 2s infinite;
-  }
-
-  > span:nth-child(2) {
-    animation-delay: -0.2s;
-  }
-
-  > span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-`;

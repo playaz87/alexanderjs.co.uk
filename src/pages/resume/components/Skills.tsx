@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SkillIndicator } from './SkillIndicator.tsx';
+import { SkillIndicator } from './SkillIndicator';
 
 export interface Skill {
   label: string;

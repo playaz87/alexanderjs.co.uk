@@ -8,8 +8,6 @@ import { PokeStats } from './components/PokeStats';
 import { extractPokeApiId, leftPadId } from '../../common/utils/utils';
 import { fetchPokemonByName } from '../../store/poke-api/pokeApiSlice';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
-import { BackArrow } from '../../common/components/BackArrow';
-import { appRoutes } from '../../AppRoutes';
 import { Spinner } from '../../common/components/Spinner';
 
 export const PokemonDetailLayout = (): React.ReactElement => {
@@ -37,10 +35,6 @@ export const PokemonDetailLayout = (): React.ReactElement => {
 
   return (
     <Container>
-      <Header $color={species?.color.name}>
-        <BackArrow onClick={() => navigate(appRoutes.pokeAPI.nav())} />
-        <div>PokeAPI</div>
-      </Header>
       <Wrapper>
         <Name $color={species?.color.name}>{pokemon.name.toUpperCase()}</Name>
         <DetailWrap>
@@ -59,8 +53,7 @@ export const PokemonDetailLayout = (): React.ReactElement => {
 
 const SpinnerContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,27 +61,10 @@ const SpinnerContainer = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
   font-family: 'Pokemon Hollow', sans-serif;
-`;
-
-const Header = styled.nav<{ $color: string }>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: var(--color-${props => props.$color});
-
-  > div:last-of-type {
-    background-color: yellow;
-    background-clip: text;
-    -webkit-text-fill-color: yellow;
-    font-size: 2.6rem;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -99,6 +75,7 @@ const Wrapper = styled.div`
   padding: 3rem;
   background-color: var(--bg-1);
   font-family: Roboto Slab;
+  color: var(--accent);
 `;
 
 const Name = styled.div<{ $color: string }>`
@@ -111,9 +88,11 @@ const Name = styled.div<{ $color: string }>`
 
 const DetailWrap = styled.div`
   width: 100%;
+  max-height: 100%;
   display: grid;
   grid-template-columns: minmax(20rem, 1fr) minmax(16rem, 32rem) minmax(20rem, 1fr);
   align-items: center;
+  overflow: visible;
 
   @media screen and (max-width: 60rem) {
     grid-template-columns: 1fr;

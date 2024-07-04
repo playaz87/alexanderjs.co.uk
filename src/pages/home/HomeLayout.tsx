@@ -1,23 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ResumeCard } from './components/ResumeCard';
-import { PokeApiCard } from './components/PokeApiCard';
-import { CandidateCard } from './components/CandidateCard';
-import { Td2Card } from './components/TD2Card';
-import { ShinBaramCard } from './components/ShinBaramCard';
-import { GithubCard } from './components/GithubCard';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Header } from './components/Header';
+import { appRoutes } from '../../AppRoutes';
 
 export const HomeLayout = (): React.ReactElement => {
+  const { pathname } = useLocation();
   return (
     <Container>
-      <Grid>
-        <GithubCard />
-        <ResumeCard />
-        <PokeApiCard />
-        <CandidateCard />
-        <Td2Card />
-        <ShinBaramCard />
-      </Grid>
+      {!pathname.includes(appRoutes.pokeAPI.path) && <Header />}
+      <Outlet />
     </Container>
   );
 };
@@ -26,32 +18,69 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-
   background-color: var(--accent);
-  padding: 2rem;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  max-width: 1000px;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: auto;
-
-  @media screen and (max-width: 750px) {
-    grid-template-columns: 1fr;
-  }
+  color: white;
 `;
 
 export const HomeCard = styled.div`
   max-width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
-  color: white;
+  justify-items: center;
+  gap: 1rem;
   padding: 1rem;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+  background-color: var(--accent);
+  grid-template-areas: 'left right';
+
+  &:nth-of-type(odd) {
+    > div {
+      grid-area: left;
+    }
+
+    > img {
+      grid-area: right;
+    }
+  }
+
+  &:nth-of-type(odd) {
+    > div {
+      grid-area: right;
+    }
+
+    > img {
+      grid-area: left;
+    }
+  }
+
+  > img {
+    padding: 0.5rem;
+    border-radius: 30px;
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .header {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .skills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
 `;

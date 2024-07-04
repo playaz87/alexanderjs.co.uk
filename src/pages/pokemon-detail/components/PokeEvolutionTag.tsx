@@ -23,7 +23,7 @@ export const PokeEvolutionTag: React.FC<Props> = ({ resource }) => {
   if (!pokemon) return null;
 
   return (
-    <TypeTag $gradient={mapTypesToGradient(pokemon.types)} onClick={() => navigate(appRoutes.pokemonDetail.nav(pokemon.name))}>
+    <TypeTag $gradient={mapTypesToGradient(pokemon.types)} onClick={() => navigate(appRoutes.pokeAPI.children.detail.nav(pokemon.name))}>
       {pokemon.name}
       {pokemon.types.map(t => (
         <TypeIcon key={t.type.name} $type={t.type.name} />

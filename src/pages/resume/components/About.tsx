@@ -25,7 +25,7 @@ export const About: React.FC = () => {
       <Row $icon={'mail'}>dev.ajsoftware@gmail.com</Row>
       <Row $icon={'map'}>British</Row>
       <Row $icon={'github'}>
-        <a href='http://github.com/playaz87' target={'_blank'}>
+        <a href='http://github.com/playaz87' target={'_blank'} rel='noreferrer'>
           Github
         </a>
       </Row>
@@ -42,8 +42,11 @@ const Row = styled.div<{ $icon: string }>`
     content: '';
     width: 1rem;
     height: 1rem;
-    background-image: url('/icons/${props => props.$icon}.svg');
-    background-size: cover;
+    mask: url('/icons/${props => props.$icon}.svg');
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--accent);
   }
 
   > a {
