@@ -1,0 +1,132 @@
+:root {
+ --btn-height-xs: 3.2rem;
+ --btn-height-s: 3.8rem;
+ --btn-height-m: 4.2rem;
+ --btn-height-l: 4.4rem;
+ --btn-height-xl: 5rem;
+
+ --btn-font-xs: 1.4rem;
+ --btn-font-s: 1.4rem;
+ --btn-font-m: 1.6rem;
+ --btn-font-l: 1.8rem;
+ --btn-font-xl: 1.8rem;
+
+ --btn-padding-xs: 0 1rem;
+ --btn-padding-s: 0 1.2rem;
+ --btn-padding-m: 0 1.4rem;
+ --btn-padding-l: 0 1.8rem;
+ --btn-padding-xl: 0 1.8rem;
+
+ --btn-padding-icon-xs: 0 1rem 0 1.4rem;
+ --btn-padding-icon-s: 0 1.2rem 0 1.6rem;
+ --btn-padding-icon-m: 0 1.4rem 0 1.8rem;
+ --btn-padding-icon-l: 0 1.8rem 0 2.2rem;
+ --btn-padding-icon-xl: 0 1.8rem 0 2.2rem;
+
+ --btn-font-color-primary: white;
+ --btn-font-color-error: white;
+ --btn-font-color-mono: var(--mono-30);
+ --btn-font-color-secondary: white;
+
+ --btn-bg-primary: var(--primary);
+ --btn-bg-error: var(--error);
+ --btn-bg-mono: var(--mono-95);
+ --btn-bg-secondary: var(--secondary);
+
+ --btn-hover-primary: var(--primary-20);
+ --btn-hover-error: var(--error-40);
+ --btn-hover-mono: var(--mono-90);
+ --btn-hover-secondary: var(--secondary-20);
+
+ --btn-bg-active-primary: var(--primary-10);
+ --btn-bg-active-error: var(--error-30);
+ --btn-bg-active-mono: var(--mono-80);
+ --btn-bg-active-secondary: var(--secondary-10);
+
+ --btn-font-color-active-primary: white;
+ --btn-font-color-active-error: white;
+ --btn-font-color-active-secondary: white;
+ --btn-font-color-active-mono: var(--mono-30);
+
+ --btn-icon-size-xs: 1.6rem;
+ --btn-icon-size-s: 1.8rem;
+ --btn-icon-size-m: 1.8rem;
+ --btn-icon-size-l: 2.4rem;
+ --btn-icon-size-xl: 2.4rem;
+
+ --btn-icon-filter-primary: brightness(0) invert(1);
+ --btn-icon-filter-error: brightness(0) invert(1);
+ --btn-icon-filter-mono: invert(27%) sepia(9%) saturate(520%) hue-rotate(169deg) brightness(99%) contrast(91%);
+
+ --btn-icon-filter-active-primary: invert(8%) sepia(94%) saturate(5010%) hue-rotate(214deg) brightness(90%) contrast(112%);
+ --btn-icon-filter-active-error: invert(22%) sepia(14%) saturate(5396%) hue-rotate(317deg) brightness(78%) contrast(142%);
+ --btn-icon-filter-active-mono: brightness(0) invert(1);
+
+ --btn-icon-filter-disabled: invert(90%) sepia(4%) saturate(236%) hue-rotate(179deg) brightness(95%) contrast(83%);
+
+ --btn-outline-border-primary: var(--primary);
+ --btn-outline-border-error: var(--error);
+ --btn-outline-border-mono: var(--mono-40);
+ --btn-outline-border-secondary: var(--secondary);
+
+ --btn-outline-font-color-primary: var(--primary);
+ --btn-outline-font-color-error: var(--error);
+ --btn-outline-font-color-mono: var(--mono-40);
+ --btn-outline-font-color-secondary: var(--secondary);
+
+ --btn-outline-bg-hover-primary: var(--primary-op-08);
+ --btn-outline-bg-hover-error: var(--error-op-08);
+ --btn-outline-bg-hover-mono: var(--mono-op-08);
+ --btn-outline-bg-hover-secondary: var(--secondary-op-08);
+
+ --btn-outline-border-active-primary: var(--primary-20);
+ --btn-outline-border-active-error: var(--error-20);
+ --btn-outline-border-active-mono: var(--mono-20);
+ --btn-outline-border-active-secondary: var(--secondary-20);
+
+ --btn-outline-bg-active-primary: var(--primary-op-16);
+ --btn-outline-bg-active-error: var(--error-op-16);
+ --btn-outline-bg-active-mono: var(--mono-op-16);
+ --btn-outline-bg-active-secondary: var(--secondary-op-16);
+
+
+ --headline-font-size-s: 2rem;
+ --headline-font-size-m: 2.4rem;
+ --headline-font-size-l: 2.8rem;
+
+ --title-font-size-s: 1.6rem;
+ --title-font-size-m: 1.8rem;
+ --title-font-size-l: 2.2rem;
+
+ --label-font-size-s: 1.4rem;
+ --label-font-size-m: 1.6rem;
+ --label-font-size-l: 1.8rem;
+
+ --body-font-size-s: 1.4rem;
+ --body-font-size-m: 1.6rem;
+ --body-font-size-l: 1.8rem;
+
+ --toggle-switch-height: 3.2rem;
+ --toggle-switch-width: 7.2rem;
+ --toggle-switch-indicator-size: 2.6rem;
+
+ --tag-bg-sub-primary: var(--primary-op-08);
+ --tag-bg-sub-error: var(--error-op-08);
+ --tag-bg-sub-mono: var(--mono-op-08);
+ --tag-bg-sub-secondary: var(--secondary-op-08);
+
+ --tag-font-sub-color-primary: var(--primary);
+ --tag-font-sub-color-error: var(--error);
+ --tag-font-sub-color-mono: var(--mono-40);
+ --tag-font-sub-color-secondary: var(--green);
+
+ --tag-bg-filled-primary: var(--primary);
+ --tag-bg-filled-error: var(--error);
+ --tag-bg-filled-mono: var(--mono);
+ --tag-bg-filled-secondary: var(--secondary);
+
+ --tag-font-outline-color-primary: var(--primary-40);
+ --tag-font-outline-color-error: var(--error);
+ --tag-font-outline-color-mono: var(--mono-40);
+ --tag-font-outline-color-secondary: var(--secondary-40);
+}
