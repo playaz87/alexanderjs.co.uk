@@ -189,12 +189,12 @@ const Wrapper = styled.div<{
   $maxCountColor: 'placeholder' | 'warning-40' | 'error';
 }>`
   width: 100%;
-  min-height: 3.8rem;
-  height: 3.8rem;
+  min-height: 2.375rem;
+  height: 2.375rem;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0 1.2rem;
+  gap: 0.375rem;
+  padding: 0 0.75rem;
   background-color: #fdfdfd;
   border: 1px solid var(${props => inputBorderColor(props.$hasError, props.$isValid, props.$highlightRequired)});
   border-radius: 4px;
@@ -223,8 +223,8 @@ const Wrapper = styled.div<{
 `;
 
 const Icon = styled.img<{ $asStart?: boolean; $width?: string; $src: string }>`
-  height: 2rem;
-  width: ${props => props.$width ?? '2rem'};
+  height: 1.25rem;
+  width: ${props => props.$width ?? '1.25rem'};
   mask: url(${props => props.$src});
   mask-size: contain;
   mask-position: center;
@@ -246,16 +246,16 @@ const Input = styled.input<{ $asFile?: boolean }>`
   flex-shrink: 1;
   border: none;
   outline: none;
-  height: 2.2rem;
+  height: 1.375rem;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   max-width: 100%;
   min-width: 0;
 
   &::placeholder {
     color: var(--placeholder);
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
     padding: 0;
   }
 
@@ -271,13 +271,13 @@ const Input = styled.input<{ $asFile?: boolean }>`
     `}
 
   @media screen and (max-width: 700px) {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `;
 
 const HelperText = styled.div<{ $hasError: boolean }>`
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   line-height: 160%;
   color: var(--${props => (props.$hasError ? 'error' : 'placeholder')});
   white-space: pre-wrap;

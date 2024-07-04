@@ -23,9 +23,10 @@ interface Props<T extends object> {
   searchKeys: string[];
   selectKey: StringKeyOfStrict<T>;
   placeholder?: string;
+  onSelect: (item: T) => void;
 }
 
-export const Search = <T extends { id: string }>({ data, strategy, renderer, searchKeys, placeholder, selectKey }: Props<T>) => {
+export const Search = <T extends { id: string }>({ data, strategy, renderer, searchKeys, placeholder, selectKey, onSelect }: Props<T>) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -124,6 +125,7 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
       setSearchTerm(val);
       setIsOpen(false);
       setActiveIndex(null);
+      onSelect(filtered[activeIndex]);
     }
   };
 
@@ -131,6 +133,7 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
     setSearchTerm(item[selectKey] as string);
     setIsOpen(false);
     setActiveIndex(null);
+    onSelect(item);
   };
 
   return (
@@ -141,10 +144,11 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
         ref={refs.setReference}
         inputProps={getReferenceProps({ onKeyDown: handleEnter })}
         icons={{
-          start: { src: '/images/common/search.svg' },
-          end2: { src: '/images/common/close_circle.svg', needsInput: true, onClick: () => setSearchTerm('') },
+          start: { src: '/icons/search.svg' },
+          end2: { src: '/icons/close_circle.svg', needsInput: true, onClick: () => setSearchTerm('') },
         }}
         placeholder={placeholder}
+        containerStyle={{ maxWidth: '500px' }}
       />
       {isOpen && (
         <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
@@ -177,9 +181,16 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
 };
 
 export const DropContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   max-height: inherit;
   border-radius: 4px;
   overflow: auto;
   background-color: white;
   box-shadow: var(--elevation);
+  color: black;
+  padding-block: 0.2rem;
+  font-family: 'Roboto Slab', serif;
+  z-index: 10;
 `;
