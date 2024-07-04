@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppSelector } from '../../store/store';
 import { usePokeFont } from '../../common/hooks/usePokeFont';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { BackArrow } from '../../common/components/BackArrow';
 import styled from 'styled-components';
 import { selectorFindPokemon, selectorFindSpecies } from '../../store/poke-api/selectors';
 import { extractPokeApiId } from '../../common/utils/utils';
-import { Search } from '../../common/components/Search';
+import Search, { type SearchHandle } from '../../common/components/Search';
 import { ALL_POKEMON_NAMES } from './all_pokemon_names';
 import { Body } from '../../common/styled-components/styled_text';
 import { appRoutes } from '../../AppRoutes';
@@ -16,14 +16,22 @@ const PokeApiLayout = (): React.ReactElement => {
   const pokemon = useAppSelector(state => selectorFindPokemon(state, name));
   const species = useAppSelector(state => selectorFindSpecies(state, extractPokeApiId(pokemon?.species.url)));
   const navigate = useNavigate();
-
+  const searchRef = useRef<SearchHandle>(null);
   usePokeFont();
+
+  useEffect(() => {
+    if (name !== searchRef.current?.getTerm()) {
+      searchRef.current?.reset();
+    }
+    searchRef.current?.close();
+  }, [name]);
 
   return (
     <Container>
       <Header $color={species?.color.name}>
         <BackArrow />
         <Search
+          ref={searchRef}
           data={ALL_POKEMON_NAMES.map(name => ({ id: name, name }))}
           renderer={({ name }) => (
             <Item>

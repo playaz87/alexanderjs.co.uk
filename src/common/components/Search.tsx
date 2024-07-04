@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import {
   autoUpdate,
   flip,
@@ -26,17 +26,25 @@ interface Props<T extends object> {
   onSelect: (item: T) => void;
 }
 
-export const Search = <T extends { id: string }>({ data, strategy, renderer, searchKeys, placeholder, selectKey, onSelect }: Props<T>) => {
+export interface SearchHandle {
+  reset: () => void;
+  close: () => void;
+  getTerm: () => string;
+}
+
+const Search = <T extends { id: string }>(
+  { data, strategy, renderer, searchKeys, placeholder, selectKey, onSelect }: Props<T>,
+  ref: React.Ref<SearchHandle>,
+) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (searchTerm) {
-      setIsOpen(true);
-      setActiveIndex(0);
-    }
-  }, [searchTerm]);
+  useImperativeHandle(ref, () => ({
+    reset: () => setSearchTerm(''),
+    close: () => setIsOpen(false),
+    getTerm: () => searchTerm,
+  }));
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -140,7 +148,10 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
     <>
       <IconInput
         value={searchTerm}
-        onChange={term => setSearchTerm(term.toLowerCase())}
+        onChange={term => {
+          setIsOpen(true);
+          setSearchTerm(term.toLowerCase());
+        }}
         ref={refs.setReference}
         inputProps={getReferenceProps({ onKeyDown: handleEnter })}
         icons={{
@@ -179,6 +190,12 @@ export const Search = <T extends { id: string }>({ data, strategy, renderer, sea
     </>
   );
 };
+
+const ForwardedSearch = React.forwardRef(Search) as <T extends { id: string }>(
+  props: Props<T> & { ref?: React.Ref<SearchHandle> },
+) => React.ReactElement;
+
+export default ForwardedSearch;
 
 export const DropContainer = styled.div`
   display: flex;
