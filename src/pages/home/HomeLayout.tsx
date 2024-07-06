@@ -19,18 +19,68 @@ const Container = styled.div`
   min-height: 100vh;
   min-height: 100svh;
   background-color: var(--accent);
+  color: white;
 `;
 
 export const HomeCard = styled.div`
   max-width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
-  color: white;
+  justify-items: center;
+  gap: 1rem;
   padding: 1rem;
-  border-radius: 10px;
-  background-color: rgb(40 169 199 / 8%);
-  cursor: pointer;
-  box-shadow: 4px 6px 5px 1px #b1aeae8a;
+  background-color: var(--accent);
+  grid-template-areas: 'left right';
+
+  &:nth-of-type(odd) {
+    > div {
+      grid-area: left;
+    }
+
+    > img {
+      grid-area: right;
+    }
+  }
+
+  &:nth-of-type(odd) {
+    > div {
+      grid-area: right;
+    }
+
+    > img {
+      grid-area: left;
+    }
+  }
+
+  > img {
+    padding: 0.5rem;
+    border-radius: 30px;
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .header {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .skills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
 `;

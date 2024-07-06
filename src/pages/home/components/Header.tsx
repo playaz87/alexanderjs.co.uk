@@ -1,16 +1,17 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { BackArrow } from '../../../common/components/BackArrow';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   return (
     <Container>
       <InnerContainer>
-        <BackArrow />
-        <Wrapper>
-          <div>Alexander Sommerville</div>
-          <div>React Developer</div>
-        </Wrapper>
+        {pathname !== '/' && <BackArrow />}
+        <Logo onClick={() => navigate('/')} />
       </InnerContainer>
     </Container>
   );
@@ -44,6 +45,18 @@ const Container = styled.div`
     left: 0;
     right: 0;
   }
+`;
+
+const Logo = styled.div`
+  width: 6rem;
+  height: 3rem;
+  mask: url('/icons/ajs.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: var(--text-accent);
+  margin-left: auto;
+  cursor: pointer;
 `;
 
 const InnerContainer = styled.header`
@@ -80,7 +93,7 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: inherit;
 
   > div:nth-of-type(1) {

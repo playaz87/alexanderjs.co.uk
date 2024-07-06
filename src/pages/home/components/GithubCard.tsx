@@ -19,7 +19,7 @@ const Header = styled.div`
 const Img = styled.div`
   height: 100%;
   width: 100%;
-  max-width: 100%;
+  max-width: 40%;
   max-height: 220px;
   mask: url('/icons/github.svg');
   mask-size: contain;
