@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Header } from './components/Header';
-import { appRoutes } from '../../AppRoutes';
 
 export const HomeLayout = (): React.ReactElement => {
   const { pathname } = useLocation();
   return (
     <Container>
-      {!pathname.includes(appRoutes.pokeAPI.path) && <Header />}
+      {/*{!pathname.includes(appRoutes.pokeAPI.path) && <Header />}*/}
       <Outlet />
     </Container>
   );
@@ -16,10 +14,17 @@ export const HomeLayout = (): React.ReactElement => {
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
   background-color: var(--accent);
   color: white;
+  padding-inline: 2rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: 6rem;
+  }
 `;
 
 export const HomeCard = styled.div`
