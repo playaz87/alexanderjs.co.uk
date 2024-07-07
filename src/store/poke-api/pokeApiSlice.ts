@@ -16,7 +16,6 @@ export const fetchNextPokemonPage = createAppAsyncThunk<Paginate>(
     } else {
       const pokemon: string[] = [];
       getState().pokeSlice.pokemon.forEach(p => pokemon.push(p.name));
-      console.log(pokemon);
     }
   },
   {

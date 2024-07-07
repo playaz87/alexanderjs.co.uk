@@ -30,12 +30,9 @@ export const useScrollToSection = <T extends HTMLElement>() => {
         threshold = 0.4;
       }
 
-      console.log(target, threshold);
-
       const observer = new IntersectionObserver(
         entries =>
           entries.forEach(entry => {
-            console.log(entry);
             if (entry.isIntersecting) {
               setVisible(href.substring(1));
             }

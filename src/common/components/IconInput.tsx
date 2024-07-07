@@ -135,9 +135,7 @@ export const IconInput = forwardRef<HTMLDivElement, Props>((props, ref) => {
           onFocus={onFocus}
           readOnly={readonly}
           onKeyDown={e => {
-            console.log(e);
             if (e.nativeEvent.isComposing) return;
-            console.log(e.key, onEnterKey);
             if (onEnterKey && e.key === 'Enter') onEnterKey();
           }}
           {...inputProps}
