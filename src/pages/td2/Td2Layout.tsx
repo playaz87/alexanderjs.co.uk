@@ -41,6 +41,7 @@ export const Td2Layout = (): React.ReactElement => {
 
 const Container = styled(PageContainer)`
   align-items: center;
+  height: 100%;
 `;
 
 export const DemoHeader = styled.div`
@@ -61,6 +62,7 @@ export const DemoPhoneWrap = styled.div`
 `;
 
 export const DemoQrWrap = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -72,6 +74,7 @@ export const DemoQr = styled.div<{ $platform: Platform }>`
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  flex: 1;
 
   &:before {
     content: '';
@@ -85,8 +88,9 @@ export const DemoQr = styled.div<{ $platform: Platform }>`
 
   &:after {
     content: '';
-    width: 15rem;
-    height: 15rem;
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1 / 1;
     background-image: url('/icons/td2_${props => props.$platform}_qr.png');
     background-size: cover;
   }
