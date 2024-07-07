@@ -64,7 +64,7 @@ export const HomeContent = (): React.ReactElement => {
             learning about it. I enjoy spending my free time learning about the new features and tools that I use in my daily coding life.
             <br />
             <br />
-            When I’m not at the computer, I’m usually rock fishing, reading or hanging out with my wife and dog.
+            When I’m not at the computer, I’m usually fishing, reading or hanging out with my wife and dog.
           </p>
         </Section>
 
