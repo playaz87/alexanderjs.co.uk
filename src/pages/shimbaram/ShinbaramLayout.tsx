@@ -1,7 +1,8 @@
 import React from 'react';
 import { PhoneFrame } from '../../common/components/PhoneFrame';
 import styled from 'styled-components';
-import { PhoneWrap, Qr, QrWrap } from '../td2/Td2Layout';
+import { DemoDescription, DemoHeader, DemoPhoneWrap, DemoQr, DemoQrWrap } from '../td2/Td2Layout';
+import { PageContainer } from '../home/HomeLayout';
 
 export const ShinbaramLayout = (): React.ReactElement => {
   const handleQrClick = () => {
@@ -10,8 +11,8 @@ export const ShinbaramLayout = (): React.ReactElement => {
 
   return (
     <Container>
-      <Header>Shinbaram</Header>
-      <Description>
+      <DemoHeader>Shinbaram</DemoHeader>
+      <DemoDescription>
         <p>
           Shinbaram is a secondhand marketplace hybrid app for agricultural products in Korea. Built with Ionic 7, React 18, graphQL and
           Capacitor.
@@ -23,44 +24,22 @@ export const ShinbaramLayout = (): React.ReactElement => {
             <li>Real time chat with websockets</li>
           </ul>
         </p>
-      </Description>
-      <PhoneWrap>
+      </DemoDescription>
+      <DemoPhoneWrap>
         <PhoneFrame src={'https://mobile.신바람.com'} />
-      </PhoneWrap>
-      <QrWrap>
+      </DemoPhoneWrap>
+      <DemoQrWrap>
         <ShirnbaramQr $platform={'android'} onClick={handleQrClick} />
-      </QrWrap>
+      </DemoQrWrap>
     </Container>
   );
 };
 
-const Container = styled.div`
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+const Container = styled(PageContainer)`
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 3rem;
-  background-color: var(--bg-1);
-  color: var(--accent);
 `;
 
-const Header = styled.div`
-  font-size: 2rem;
-  font-weight: 600;
-`;
-
-const Description = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-wrap: pretty;
-`;
-
-const ShirnbaramQr = styled(Qr)`
+const ShirnbaramQr = styled(DemoQr)`
   &:after {
     background-image: url('/icons/shinbaram_${props => props.$platform}_qr.png');
   }

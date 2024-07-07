@@ -3,6 +3,7 @@
   --accent: #373f52;
   --text-accent: rgb(15, 225, 137);
   --bg-1: #f4f4f4;
+  --bg-2: rgb(15 23 42);
 
   --grass: #5fbd58;
   --grass-light: #81c784;
@@ -48,12 +49,17 @@
 
 }
 
+//@media (prefers-reduced-motion: no-preference) {
+//  html {
+//    scroll-behavior: smooth;
+//  }
+//}
+
+
 *, *:before, *:after {
   box-sizing: border-box;
-}
-
-ul {
   margin: 0;
+  text-wrap: pretty;
 }
 
 @media print {

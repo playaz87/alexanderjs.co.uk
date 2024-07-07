@@ -11,7 +11,13 @@ export const Header: React.FC = () => {
     <Container>
       <InnerContainer>
         {pathname !== '/' && <BackArrow />}
-        <Logo onClick={() => navigate('/')} />
+        {pathname === '/' && <div />}
+
+        <Socials>
+          <Logo onClick={() => navigate('/')} />
+          <Social $src={'github'} onClick={() => window.open('https://github.com/playaz87', '_blank')} />
+          <Social $src={'linkedin'} onClick={() => window.open('https://www.linkedin.com/in/alexander-sommerville-8b2296225/', '_blank')} />
+        </Socials>
       </InnerContainer>
     </Container>
   );
@@ -38,13 +44,12 @@ const collapseMobile = keyframes`
 `;
 
 const Container = styled.div`
-  z-index: 10;
-  @supports (animation-timeline: scroll()) {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 101;
+  height: var(--_header-height);
 `;
 
 const Logo = styled.div`
@@ -55,7 +60,6 @@ const Logo = styled.div`
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: var(--text-accent);
-  margin-left: auto;
   cursor: pointer;
 `;
 
@@ -64,7 +68,7 @@ const InnerContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--accent);
+  background-color: var(--bg-2);
   color: white;
   padding: 2em;
   font-size: 0.6rem;
@@ -133,4 +137,21 @@ const Wrapper = styled.div`
   //    font-size: 0.8em;
   //  }
   //}
+`;
+
+const Socials = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+`;
+
+const Social = styled.div<{ $src: string }>`
+  width: 2rem;
+  height: 2rem;
+  mask: url('/icons/${props => props.$src}.svg');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  background-color: var(--text-accent);
 `;

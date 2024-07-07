@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PageContainer } from '../home/HomeLayout';
 
 export const CandidateLayout = (): React.ReactElement => {
   return (
-    <Container>
-      <Img src={'/icons/logo_name_dark.svg'} />
+    <PageContainer>
+      <Img src={'/icons/candidate_light.svg'} />
       <Video src={'/videos/candidate_demo.mp4'} controls />
       <Description>
         <div>
@@ -61,20 +62,9 @@ export const CandidateLayout = (): React.ReactElement => {
           </ul>
         </Features>
       </Description>
-    </Container>
+    </PageContainer>
   );
 };
-
-const Container = styled.div`
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  background-color: var(--bg-1);
-  color: var(--accent);
-`;
 
 const Img = styled.img`
   padding: 1rem;

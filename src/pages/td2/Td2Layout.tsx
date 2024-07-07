@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PhoneFrame } from '../../common/components/PhoneFrame';
+import { PageContainer } from '../home/HomeLayout';
 
 export type Platform = 'ios' | 'android';
 
@@ -15,8 +16,8 @@ export const Td2Layout = (): React.ReactElement => {
 
   return (
     <Container>
-      <Header>Tome of D2</Header>
-      <Description>
+      <DemoHeader>Tome of D2</DemoHeader>
+      <DemoDescription>
         <p>Originally built with Angular, Ionic 3 and Cordova. The latest version is built with Ionic 7, React 18 and Capacitor.</p>
         <p>
           Features include:
@@ -26,55 +27,46 @@ export const Td2Layout = (): React.ReactElement => {
             <li>Trading platform (Spring Boot + MySQL)</li>
           </ul>
         </p>
-      </Description>
-      <PhoneWrap>
+      </DemoDescription>
+      <DemoPhoneWrap>
         <PhoneFrame src={'https://td2.alexanderjs.co.uk'} />
-      </PhoneWrap>
-      <QrWrap>
-        <Qr $platform={'android'} onClick={() => handleQrClick('android')} />
-        <Qr $platform={'ios'} onClick={() => handleQrClick('ios')} />
-      </QrWrap>
+      </DemoPhoneWrap>
+      <DemoQrWrap>
+        <DemoQr $platform={'android'} onClick={() => handleQrClick('android')} />
+        <DemoQr $platform={'ios'} onClick={() => handleQrClick('ios')} />
+      </DemoQrWrap>
     </Container>
   );
 };
 
-const Container = styled.div`
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+const Container = styled(PageContainer)`
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 3rem;
-  background-color: var(--bg-1);
-  color: var(--accent);
 `;
 
-const Header = styled.div`
+export const DemoHeader = styled.div`
   font-size: 2rem;
   font-weight: 600;
-  color: var(--accent);
+  color: white;
 `;
 
-const Description = styled.div`
+export const DemoDescription = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
-export const PhoneWrap = styled.div`
+export const DemoPhoneWrap = styled.div`
   min-height: 700px;
 `;
 
-export const QrWrap = styled.div`
+export const DemoQrWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
 `;
 
-export const Qr = styled.div<{ $platform: Platform }>`
+export const DemoQr = styled.div<{ $platform: Platform }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,9 +77,10 @@ export const Qr = styled.div<{ $platform: Platform }>`
     content: '';
     width: 2rem;
     height: 2rem;
-    background-image: url('/icons/${props => props.$platform}_logo.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    mask: url('/icons/${props => props.$platform}.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: white;
   }
 
   &:after {

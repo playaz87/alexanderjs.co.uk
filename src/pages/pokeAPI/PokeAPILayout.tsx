@@ -59,7 +59,7 @@ const Container = styled.div`
   max-height: 100vh;
   max-height: 100svh;
   background-color: var(--bg-1);
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const Item = styled.div`

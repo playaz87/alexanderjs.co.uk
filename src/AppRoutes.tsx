@@ -47,29 +47,31 @@ export const AppRoutes = (): React.ReactElement => {
     <Routes>
       <Route path={'/'} element={<HomeLayout />}>
         <Route element={<HomeContent />} index />
-        <Route
-          path={appRoutes.resume.path}
-          element={
-            <Suspense fallback={<SuspenseFallback />}>
-              <LazyResume />
-            </Suspense>
-          }
-        />
-        <Route
-          path={appRoutes.pokeAPI.path}
-          element={
-            <Suspense fallback={<SuspenseFallback />}>
-              <LazyPokeApi />
-            </Suspense>
-          }
-        >
-          <Route path={appRoutes.pokeAPI.path} element={<PokeApiContent />} index />
-          <Route path={appRoutes.pokeAPI.children.detail.path} element={<PokemonDetailLayout />} />
-        </Route>
 
         <Route path={appRoutes.candidate.path} element={<CandidateLayout />} />
         <Route path={appRoutes.td2.path} element={<Td2Layout />} />
         <Route path={appRoutes.shinbaram.path} element={<ShinbaramLayout />} />
+      </Route>
+
+      <Route
+        path={appRoutes.resume.path}
+        element={
+          <Suspense fallback={<SuspenseFallback />}>
+            <LazyResume />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path={appRoutes.pokeAPI.path}
+        element={
+          <Suspense fallback={<SuspenseFallback />}>
+            <LazyPokeApi />
+          </Suspense>
+        }
+      >
+        <Route path={appRoutes.pokeAPI.path} element={<PokeApiContent />} index />
+        <Route path={appRoutes.pokeAPI.children.detail.path} element={<PokemonDetailLayout />} />
       </Route>
     </Routes>
   );
