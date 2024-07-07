@@ -246,6 +246,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
 
   > p {
     color: var(--mono-60);

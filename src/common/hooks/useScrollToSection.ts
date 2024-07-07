@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 export const useScrollToSection = <T extends HTMLElement>() => {
   const navList = useRef<T>(null);
+  const [allVisible, setAllVisible] = useState<string[]>([]);
+  const sections = useRef<string[]>([]);
   const [visible, setVisible] = useState<string>();
   const observers = useRef<IntersectionObserver[] | null>(null);
 
@@ -15,30 +17,32 @@ export const useScrollToSection = <T extends HTMLElement>() => {
 
       const href = anchor.getAttribute('href');
       if (!href) continue;
+      sections.current = [...sections.current, href.substring(1)];
 
-      const target = document.querySelector(href);
-      if (!target) continue;
+      const section = document.querySelector(href);
+      if (!section) continue;
 
-      const parent = target.parentElement;
+      const target = document.createElement('span');
+      target.style.position = 'absolute';
+      target.style.top = '0';
+      target.style.width = '1px';
+      target.style.height = '1px';
+      target.style.backgroundColor = 'transparent';
+      section.appendChild(target);
+
+      const parent = section.parentElement;
       if (!parent) continue;
-
-      let threshold = target.getBoundingClientRect().height / parent.getBoundingClientRect().height;
-
-      if (threshold < 1) {
-        threshold = 1;
-      } else if (threshold > 1) {
-        threshold = 0.4;
-      }
 
       const observer = new IntersectionObserver(
         entries =>
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              setVisible(href.substring(1));
+              setAllVisible(prev => (prev.includes(href.substring(1)) ? prev : [...prev, href.substring(1)]));
+            } else {
+              setAllVisible(prev => prev.filter(id => id !== href.substring(1)));
             }
           }),
-        { threshold, rootMargin: `${parent.getBoundingClientRect().top}px 0px 0px 0px` },
-        // { threshold },
+        { threshold: 1, root: null, rootMargin: `-${parent.getBoundingClientRect().top}px 0px 0px 0px` },
       );
       observers.current?.push(observer);
       observer.observe(target);
@@ -51,6 +55,26 @@ export const useScrollToSection = <T extends HTMLElement>() => {
       observers.current?.forEach(o => o.disconnect());
     };
   }, []);
+
+  useEffect(() => {
+    if (!sections.current.length || !allVisible.length) return;
+
+    console.log(allVisible);
+
+    if (allVisible.length === 1) {
+      return setVisible(allVisible[0]);
+    }
+
+    if (allVisible.includes(sections.current[0])) {
+      return setVisible(sections.current[0]);
+    }
+
+    if (allVisible.includes(sections.current.at(-1)!)) {
+      return setVisible(sections.current.at(-1));
+    }
+
+    setVisible(allVisible[0]);
+  }, [allVisible]);
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
