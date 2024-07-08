@@ -43,7 +43,7 @@ export const useScrollToSection = <T extends HTMLElement>() => {
               setAllVisible(prev => prev.filter(id => id !== href.substring(1)));
             }
           }),
-        { threshold: 1, root: null, rootMargin: `-${parent.getBoundingClientRect().top}px 0px 0px 0px` },
+        { threshold: 1, root: null, rootMargin: `-${parent.getBoundingClientRect().top}px 0px -15% 0px` },
       );
       observers.current?.push(observer);
       observer.observe(target);
