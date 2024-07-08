@@ -28,6 +28,7 @@ export const useScrollToSection = <T extends HTMLElement>() => {
       target.style.width = '1px';
       target.style.height = '1px';
       target.style.backgroundColor = 'transparent';
+      target.setAttribute('id', `scroll_target_${href.substring(1)}`);
       section.appendChild(target);
 
       const parent = section.parentElement;
@@ -78,7 +79,15 @@ export const useScrollToSection = <T extends HTMLElement>() => {
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
-    document.querySelector((e.target as HTMLAnchorElement).getAttribute('href')!)?.scrollIntoView({ behavior: 'smooth' });
+    // debugger;
+    const href = (e.target as HTMLAnchorElement).getAttribute('href');
+    const target = document.getElementById(href!.substring(1));
+    const parent = target!.parentElement;
+    if (!parent) return;
+    window.scrollTo({
+      top: target!.getBoundingClientRect().top - parent.getBoundingClientRect().top,
+      behavior: 'smooth',
+    });
   };
 
   return { ref: navList, visible };
