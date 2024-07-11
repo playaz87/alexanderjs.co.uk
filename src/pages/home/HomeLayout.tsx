@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
-import { appRoutes } from '../../AppRoutes';
 
 export const HomeLayout = (): React.ReactElement => {
   const { pathname } = useLocation();
@@ -13,7 +12,7 @@ export const HomeLayout = (): React.ReactElement => {
 
   return (
     <Container>
-      {!pathname.includes(appRoutes.pokeAPI.path) && <Header />}
+      <Header />
       <Outlet />
     </Container>
   );
