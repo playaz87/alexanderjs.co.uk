@@ -154,6 +154,7 @@ const Socials = styled.div`
 const Social = styled.a<{ $src: string }>`
   width: 2rem;
   height: 2rem;
+  border-radius: 8px;
 
   &:before {
     content: '';
@@ -169,5 +170,9 @@ const Social = styled.a<{ $src: string }>`
 
   &:focus {
     box-shadow: 0 0 11px 2px #ddc1c1;
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 `;
