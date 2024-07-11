@@ -19,6 +19,7 @@ export const SectionCandidate = (): React.ReactElement => {
         'Redux',
         'Styled Components',
         'SASS',
+        'Next.js',
         'HTML',
         'Socket IO',
         'Floating UI',
