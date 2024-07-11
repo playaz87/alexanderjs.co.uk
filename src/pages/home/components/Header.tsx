@@ -15,8 +15,13 @@ export const Header: React.FC = () => {
 
         <Socials>
           <Logo onClick={() => navigate('/')} />
-          <Social $src={'github'} onClick={() => window.open('https://github.com/playaz87', '_blank')} />
-          <Social $src={'linkedin'} onClick={() => window.open('https://www.linkedin.com/in/alexander-sommerville-8b2296225/', '_blank')} />
+          <Social $src={'github'} href={'https://github.com/playaz87'} target={'_blank'} rel={'noreferrer noopener'} />
+          <Social
+            $src={'linkedin'}
+            href={'https://www.linkedin.com/in/alexander-sommerville-8b2296225/'}
+            target={'_blank'}
+            rel={'noreferrer noopener'}
+          />
         </Socials>
       </InnerContainer>
     </Container>
@@ -24,23 +29,23 @@ export const Header: React.FC = () => {
 };
 
 const collapse = keyframes`
-    from {
-        height: 240px;
-        font-size: 0.8rem;
-    }
-    to {
-        height: 90px;
-    }
+	from {
+		height: 240px;
+		font-size: 0.8rem;
+	}
+	to {
+		height: 90px;
+	}
 `;
 
 const collapseMobile = keyframes`
-    0% {
-        height: 200px;
-        font-size: 0.8rem;
-    }
-    10% {
-        height: 90px;
-    }
+	0% {
+		height: 200px;
+		font-size: 0.8rem;
+	}
+	10% {
+		height: 90px;
+	}
 `;
 
 const Container = styled.div`
@@ -146,12 +151,23 @@ const Socials = styled.div`
   cursor: pointer;
 `;
 
-const Social = styled.div<{ $src: string }>`
+const Social = styled.a<{ $src: string }>`
   width: 2rem;
   height: 2rem;
-  mask: url('/icons/${props => props.$src}.svg');
-  mask-size: contain;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  background-color: var(--text-accent);
+
+  &:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    mask: url('/icons/${props => props.$src}.svg');
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--text-accent);
+    display: block;
+  }
+
+  &:focus {
+    box-shadow: 0 0 11px 2px #ddc1c1;
+  }
 `;
