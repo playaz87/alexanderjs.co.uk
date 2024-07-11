@@ -169,13 +169,19 @@ const Header = styled(Part)`
   @media (max-width: 520px) {
     gap: 1.5rem;
     font-size: 1rem;
+    top: -6rem;
   }
   @media (max-width: 1130px) {
     align-items: flex-start;
+    top: -13rem;
   }
 `;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  //position: sticky;
+  //top: var(--_header-height);
+  //z-index: 11;
+`;
 
 const Ul = styled.ul`
   list-style: none;
