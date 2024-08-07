@@ -13,13 +13,19 @@ export const HomeLayout = (): React.ReactElement => {
   return (
     <Container>
       <Header />
-      <Outlet />
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
     </Container>
   );
 };
 
 const Container = styled.div`
   --_header-height: 5rem;
+  display: contents;
+`;
+
+const Wrapper = styled.div`
   width: 100%;
   background-color: var(--bg-2);
   color: white;
@@ -38,7 +44,7 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-top: var(--_header-height);
+  //margin-top: var(--_header-height);
   background-color: var(--bg-2);
   color: var(--mono-60);
 `;

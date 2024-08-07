@@ -50,14 +50,17 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 10rem 1fr;
   align-items: start;
-  column-gap: 1rem;
-  row-gap: 0.5rem;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  padding-block: 0.5rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 12rem 1fr;
     column-gap: 1.5rem;
+    justify-items: center;
   }
-  @media (max-width: 520px) {
+
+  @media (max-width: 590px) {
     grid-template-columns: 1fr;
     column-gap: 1.5rem;
   }
@@ -65,6 +68,7 @@ const Container = styled.div`
 
 const Img = styled.img`
   max-width: 100%;
+  max-height: 10rem;
   object-fit: contain;
   padding-top: 2.6rem;
   cursor: pointer;

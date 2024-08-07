@@ -29,32 +29,33 @@ export const Header: React.FC = () => {
 };
 
 const collapse = keyframes`
-	from {
-		height: 240px;
-		font-size: 0.8rem;
-	}
-	to {
-		height: 90px;
-	}
+    from {
+        height: 240px;
+        font-size: 0.8rem;
+    }
+    to {
+        height: 90px;
+    }
 `;
 
 const collapseMobile = keyframes`
-	0% {
-		height: 200px;
-		font-size: 0.8rem;
-	}
-	10% {
-		height: 90px;
-	}
+    0% {
+        height: 200px;
+        font-size: 0.8rem;
+    }
+    10% {
+        height: 90px;
+    }
 `;
 
 const Container = styled.div`
-  position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
   top: 0;
   z-index: 101;
   height: var(--_header-height);
+  //outline: 1px solid hotpink;
 `;
 
 const Logo = styled.div`
@@ -112,36 +113,6 @@ const Wrapper = styled.div`
   > div:nth-of-type(2) {
     font-size: 3em;
   }
-
-  //@media screen and (max-width: 800px) {
-  //  > div:first-of-type {
-  //    font-size: 1.6em;
-  //  }
-  //
-  //  > div:last-of-type {
-  //    font-size: 1.5em;
-  //  }
-  //}
-  //
-  //@media screen and (max-width: 500px) {
-  //  > div:first-of-type {
-  //    font-size: 1.4em;
-  //  }
-  //
-  //  > div:last-of-type {
-  //    font-size: 1.3em;
-  //  }
-  //}
-  //
-  //@media screen and (max-width: 400px) {
-  //  > div:first-of-type {
-  //    font-size: 1em;
-  //  }
-  //
-  //  > div:last-of-type {
-  //    font-size: 0.8em;
-  //  }
-  //}
 `;
 
 const Socials = styled.div`
@@ -169,7 +140,7 @@ const Social = styled.a<{ $src: string }>`
   }
 
   &:focus {
-    box-shadow: 0 0 11px 2px #ddc1c1;
+    filter: drop-shadow(11px 2px #ddc1c1);
   }
 
   &:focus-visible {

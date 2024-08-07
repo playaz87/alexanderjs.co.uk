@@ -93,7 +93,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: var(--_header-height);
 
   a {
     color: white;
@@ -166,14 +165,15 @@ const Header = styled(Part)`
     font-size: 1em;
   }
 
+  @media (max-width: 1130px) {
+    align-items: flex-start;
+    top: -11rem;
+  }
+
   @media (max-width: 520px) {
     gap: 1.5rem;
     font-size: 1rem;
-    top: -6rem;
-  }
-  @media (max-width: 1130px) {
-    align-items: flex-start;
-    top: -13rem;
+    top: -5.5rem;
   }
 `;
 
@@ -190,7 +190,7 @@ const Ul = styled.ul`
   gap: 0.6rem;
   padding: 0;
 
-  @media (max-width: 820px) {
+  @media (max-width: 1130px) {
     flex-direction: row;
   }
 `;
