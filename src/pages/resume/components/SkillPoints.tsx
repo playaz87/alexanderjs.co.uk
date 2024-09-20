@@ -9,7 +9,7 @@ interface Props {
 
 export const SkillPoints: React.FC<Props> = ({ skill }) => {
   const vals = useMemo(() => {
-    let vals: PointTypes[] = [];
+    const vals: PointTypes[] = [];
     for (let i = 1; i < 6; i++) {
       if (i <= skill.points) {
         vals.push('full');
@@ -76,7 +76,7 @@ const Point = styled.div<{ $type: PointTypes }>`
       }
     `}
 
-    ${({ $type }) =>
+	${({ $type }) =>
     $type === 'full' &&
     css`
       &:before {

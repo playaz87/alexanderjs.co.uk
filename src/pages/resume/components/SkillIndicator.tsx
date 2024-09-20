@@ -9,8 +9,8 @@ interface Props {
 
 export const SkillIndicator: React.FC<Props> = ({ skill }) => {
   const springProps = useSpring({
-    from: { width: 0 },
-    to: { width: skill.points },
+    from: { width: '0%' },
+    to: { width: `${skill.points}%` },
     config: { tension: 170, friction: 26 },
   });
 
@@ -43,7 +43,7 @@ const BarWrapper = styled.div`
 `;
 
 const Bar = styled(animated.div)<{ $percent: number }>`
-  width: ${props => props.$percent}px;
+  width: ${props => props.$percent}%;
   position: absolute;
   left: 0;
   top: 0;
