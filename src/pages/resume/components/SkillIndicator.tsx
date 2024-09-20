@@ -43,7 +43,7 @@ const BarWrapper = styled.div`
 `;
 
 const Bar = styled(animated.div)<{ $percent: number }>`
-  width: ${props => props.$percent}px;
+  width: ${props => props.$percent}%;
   position: absolute;
   left: 0;
   top: 0;
