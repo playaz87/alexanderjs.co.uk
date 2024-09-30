@@ -4,17 +4,29 @@ import styled from 'styled-components';
 export const About: React.FC = () => {
   return (
     <>
-      <Row $icon={'mail'}>dev.ajsoftware@gmail.com</Row>
-      <Row $icon={'map'}>British</Row>
+      <Row $icon={'mail'}>
+        <ATSLabel>Email:</ATSLabel>
+        dev.ajsoftware@gmail.com
+      </Row>
+      <Row $icon={'map'}>
+        <ATSLabel>Nationality</ATSLabel>
+        British
+      </Row>
       <Row $icon={'home_page'}>
+        <ATSLabel>Portfolio:</ATSLabel>
         <a href='https://alexjs.uk' target={'_blank'} rel='noreferrer'>
           alexjs.uk
         </a>
       </Row>
       <Row $icon={'github'}>
+        <ATSLabel>Github:</ATSLabel>
         <a href='https://github.com/playaz87' target={'_blank'} rel='noreferrer'>
           Github
         </a>
+      </Row>
+      <Row $icon={'university'}>
+        <ATSLabel>Education:</ATSLabel>
+        BSc Biology
       </Row>
     </>
   );
@@ -24,6 +36,7 @@ const Row = styled.div<{ $icon: string }>`
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
 
   &:before {
     content: '';
@@ -57,4 +70,9 @@ const Row = styled.div<{ $icon: string }>`
   > span:not(:first-of-type) {
     margin-left: -1rem;
   }
+`;
+
+const ATSLabel = styled.label`
+  position: absolute;
+  left: -200vw;
 `;

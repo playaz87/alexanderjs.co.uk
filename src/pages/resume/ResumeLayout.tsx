@@ -33,11 +33,12 @@ const ResumeLayout = (): React.ReactElement => {
                 Experienced Frontend React Developer with 5 years of expertise in creating, maintaining, and deploying high-quality React
                 applications
               </li>
-              <li>Proficient in developing hybrid mobile apps using React and CapacitorJS</li>
+              <li>I create pixel-perfect, responsive applications from design files such as Figma</li>
               <li>
                 Successfully delivered several projects from conception to deployment, ensuring robust performance and user-friendly
                 interfaces.
               </li>
+              <li>Proficient in developing hybrid mobile apps using React and CapacitorJS</li>
               <li>
                 I&apos;m Passionate about frontend development, I dedicate my free time to learning and experimenting with new technologies
                 and features, constantly striving to enhance my skills and stay current with industry trends.

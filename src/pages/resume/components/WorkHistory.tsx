@@ -5,7 +5,7 @@ import { WorkHistoryItem } from './WorkHistoryItem';
 const history: WorkItem[] = [
   {
     id: 1,
-    title: { role: 'Sole Frontend Developer', company: 'Candidate Inc.' },
+    title: { role: 'Lead Frontend Developer', company: 'Candidate Inc.' },
     date: '2022.03 ~ Current',
     stack: ['React 18', 'Redux Toolkit', 'Styled Components', 'Axios', 'Socket IO', 'Vite'],
     summary: [
